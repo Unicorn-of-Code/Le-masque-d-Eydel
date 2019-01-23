@@ -7,6 +7,9 @@ import java.util.*;
  */
 public abstract class Time {
 
+    /**
+     * List of the timers
+     */
     private List<Timer> timers = new ArrayList<Timer>();
 
     /**
