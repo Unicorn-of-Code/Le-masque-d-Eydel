@@ -1,5 +1,7 @@
 package entity.attack;
 
+import entity.Entity;
+
 import java.util.*;
 
 /**
@@ -16,17 +18,17 @@ public abstract class DamageCalculation {
     /**
      * 
      */
-    private static float strong = 1.5;
+    private final static float strong = 1.5f;
 
     /**
      * 
      */
-    private static float medium = 1;
+    private final static float medium = 1f;
 
     /**
      * 
      */
-    private static float weak = 0.5;
+    private final static float weak = 0.5f;
 
     /**
      * @param attackState 

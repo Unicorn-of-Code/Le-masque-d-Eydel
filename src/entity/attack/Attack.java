@@ -1,5 +1,8 @@
 package entity.attack;
 
+import entity.Entity;
+import entity.Player;
+
 import java.util.*;
 
 /**
@@ -8,43 +11,40 @@ import java.util.*;
 public abstract class Attack {
 
     /**
-     * Default constructor
+     * Default Constructor
+     * @param entity Entity which launched the Attack
      */
-    public Attack() {
+    Attack(Entity entity) {
+        this.entity = entity;
     }
 
     /**
-     * 
+     * Stack of all the AttackState
      */
-    private Set<AttackState> stateStack;
+    private Stack<AttackState> stateStack = new Stack<AttackState>();
 
     /**
-     * 
+     * Entity which launched the spell
      */
     private Entity entity;
 
     /**
-     * @param delta 
-     * @return
+     * Update the attack with the Delta Time
+     * @param deltaTime Delta Time
+     * @return True if the Attack is finished
      */
-    public boolean update(long delta) {
-        // TODO implement here
-        return false;
+    public boolean update(long deltaTime) {
+        if (stateStack.peek().update(deltaTime)) {
+            stateStack.pop();
+        }
+        return stateStack.empty();
     }
 
     /**
-     * @return
+     * Get the Entity of the launcher
+     * @return Entity which launched this attack
      */
-    public Player getPlayer() {
-        // TODO implement here
-        return null;
+    public Entity getEntity() {
+        return entity;
     }
-
-    /**
-     * @param player
-     */
-    public void Attack(Player player) {
-        // TODO implement here
-    }
-
 }

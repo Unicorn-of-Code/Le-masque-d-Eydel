@@ -1,5 +1,9 @@
 package entity.attack;
 
+import entity.Entity;
+import entity.hitbox.Element;
+import entity.hitbox.Hitbox;
+
 import java.util.*;
 
 /**
@@ -8,18 +12,29 @@ import java.util.*;
 public abstract class AttackState {
 
     /**
-     * Default constructor
+     * Constructor
+     * @param damage Damage done by the AttackState
+     * @param movement Movement of the AttackState's hitboxes
+     * @param hitboxes Hitboxes of the AttackState
      */
-    public AttackState() {
+    public AttackState(Attack attackProperty, int damage, Vector2f movement, ArrayList<Shape> shapes, Element element) {
+        this.damage = damage;
+        this.movement = movement;
+        for (Shape shape : shapes) {
+            hitboxes.add(new Hitbox(
+                    shape,
+                    attackProperty.getEntity().getHitbox().getAllegency(),  // Take the Allegency of the launcher
+                    element));
+        }
     }
 
     /**
-     * 
+     * Damage done by the Attack
      */
     private int damage;
 
     /**
-     * 
+     * Vector of the movement of the AttackState's Hitbox
      */
     private Vector2f movement;
 
@@ -29,48 +44,42 @@ public abstract class AttackState {
     private Attack attackProperty;
 
     /**
-     * 
+     * Hitboxes of the AttackState
      */
-    private Set<Hitbox> hiboxes;
+    private List<Hitbox> hitboxes = new ArrayList<Hitbox>();
 
     /**
-     * @param delta 
-     * @return
+     * Update the AttackState with the delta Time
+     * @param deltaTime Delta Time
+     * @return if the AttackState is finished
      */
-    public boolean update(long delta) {
-        // TODO implement here
-        return false;
+    boolean update(long deltaTime) {
+        for (Hitbox hitbox : hitboxes) {
+
+        }
     }
 
     /**
-     * @return
+     * Return int damage
+     * @return damage
      */
     public int getDamage() {
-        // TODO implement here
-        return 0;
+        return damage;
     }
 
     /**
-     * @return
+     * Return hitboxes
+     * @return List<Hitbox> hitboxes
      */
-    public Hitbox getHitbox() {
-        // TODO implement here
-        return null;
+    public List<Hitbox> getHitboxes() {
+        return hitboxes;
     }
 
     /**
-     * @return
+     * Return attackProperty
+     * @return Attack attackProperty
      */
     public Attack getAttackProperty() {
-        // TODO implement here
-        return null;
+        return attackProperty;
     }
-
-    /**
-     * @param attackProperty
-     */
-    public void AttackState(Attack attackProperty) {
-        // TODO implement here
-    }
-
 }
