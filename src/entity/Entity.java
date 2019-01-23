@@ -1,14 +1,14 @@
 package entity;
 
 
-
 import entity.attack.EntityState;
 import entity.hitbox.Hitbox;
 
 import java.util.*;
-import entity.attack.EntityState;
 
-
+/**
+ * 
+ */
 public abstract class Entity {
 
     /**

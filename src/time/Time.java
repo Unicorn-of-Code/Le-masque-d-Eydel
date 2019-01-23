@@ -3,71 +3,54 @@ package time;
 import java.util.*;
 
 /**
- * 
+ * Abstract class which create Timers and update them
  */
 public final class Time {
 
     /**
-     * Default constructor
+     * List of the timers
      */
-<<<<<<< HEAD
     private static List<TimerType> timers = new ArrayList<TimerType>();
-=======
-    public Time() {
-    }
->>>>>>> 7df80eb97ee73465a553909615c11c6b6422b928
 
 
     /**
-     * @param time 
-     * @return
+     * Create Tick
+     * @param time Time when it has to tick
+     * @return The tick pointer
      */
-<<<<<<< HEAD
     public static Tick createTick(long time) {
         Tick newTick = new Tick(time);
         timers.add(newTick);
         return newTick;
-=======
-    public Tick createTick(long time) {
-        // TODO implement here
-        return null;
->>>>>>> 7df80eb97ee73465a553909615c11c6b6422b928
     }
 
     /**
-     * @param time 
-     * @return
+     * Create Timer
+     * @param time Time when it has to tick
+     * @return The Timer Pointer
      */
-<<<<<<< HEAD
     public static Timer createTimer(long time) {
         Timer newTimer = new Timer(time);
         timers.add(newTimer);
         return newTimer;
-=======
-    public Timer createTimer(long time) {
-        // TODO implement here
-        return null;
->>>>>>> 7df80eb97ee73465a553909615c11c6b6422b928
     }
 
     /**
-     * @param deltaTime
+     * Update all the Timer and th Tick
+     * @param deltaTime Delta Time
      */
     public void update(long deltaTime) {
-<<<<<<< HEAD
         for (TimerType t : timers) {
             t.update(deltaTime);
         }
-=======
-        // TODO implement here
->>>>>>> 7df80eb97ee73465a553909615c11c6b6422b928
     }
 
     /**
-     * @param timer
+     * Remove a Timer or a Tick
+     * @param timer The Timer or  Tick to delete
      */
     public void deleteTimer(Timer timer) {
-        // TODO implement here
+        timers.remove(timer);
     }
 
 }
