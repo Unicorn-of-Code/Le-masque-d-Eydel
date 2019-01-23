@@ -14,8 +14,8 @@ class Fire11 extends AttackState {
 
     /**
      * Constructor
-     *  @param attackProperty
      *
+     * @param attackProperty
      */
     Fire11(Attack attackProperty, Vector2f direction) {
         super(attackProperty, 7, direction.normalise().scale(0.1f),
@@ -24,7 +24,7 @@ class Fire11 extends AttackState {
     }
 
     @Override
-    boolean update (long deltaTime, List<Entity> entities) {
+    boolean update(long deltaTime, List<Entity> entities) {
         if (collideMultiEntity(entities)) {
             return true;
         }
@@ -38,3 +38,4 @@ class Fire11 extends AttackState {
                 Hitbox.tileSize, Hitbox.tileSize));
         return shapes;
     }
+}
