@@ -8,7 +8,21 @@ import org.newdawn.slick.geom.Vector2f;
  */
 public class Hitbox {
 
-	/**
+    /**
+     * Constructor
+     * @param shape Shape of the hitbox
+     * @param allegency Allegency of the hitbox
+     * @param element Element of the hitbox
+     */
+    public Hitbox(Shape shape, Allegency allegency, Element element) {
+        this.shape = shape;
+        this.element = element;
+        this.allegency = allegency;
+    }
+
+    public static final float tileSize = 16f;
+
+    /**
      * Shape of the hitbox
      */
     private Shape shape;
@@ -22,18 +36,6 @@ public class Hitbox {
      * Elementof the hitbox
      */
     private Element element;
-    
-    /**
-     * Constructor
-     * @param shape Shape of the hitbox
-     * @param allegency Allegency of the hitbox
-     * @param element Element of the hitbox
-     */
-    public Hitbox(Shape shape, Allegency allegency, Element element) {
-        this.shape = shape;
-        this.element = element;
-        this.allegency = allegency;
-    }
 
     /**
      * Set the element of the hitbox
