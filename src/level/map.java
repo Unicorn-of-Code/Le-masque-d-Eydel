@@ -29,7 +29,7 @@ public class map extends BasicGameState{
 	public void init(GameContainer gc, StateBasedGame s) throws SlickException {
 		this.container = gc;
 		// load map
-		this.map = new TiledMap("resources/map/TestMap.tmx");
+		this.map = new TiledMap("resources/map/map.tmx");
 		// load sprite
 		player = new Player();
 		playerAnimations = player.getAnimation();
@@ -45,14 +45,25 @@ public class map extends BasicGameState{
 	    this.map.render(0, 0, 5);
 	    this.map.render(0, 0, 6);
 	    this.map.render(0, 0, 7);
-	    
-	 // Render sprite + shadow
- 		g.setColor(new Color(0, 0, 0, .5f));
- 	    g.fillOval(player.getX() - 30, player.getY() - 23, 32, 16);
- 	    g.drawAnimation(playerAnimations[player.getDirection() + (player.isMoving() ? 4 : 0)], (int) player.getX()-32, (int) player.getY()-60);
-	 	     	    
 	    this.map.render(0, 0, 8);
 	    this.map.render(0, 0, 9);
+	    this.map.render(0, 0, 10);
+	    this.map.render(0, 0, 11);
+	    this.map.render(0, 0, 12);
+	    this.map.render(0, 0, 13);
+	    
+	 // Render sprite + shadow
+		g.setColor(new Color(0, 0, 0, .5f));
+	    g.fillOval(player.getX() - 30, player.getY() - 23, 32, 16);
+	    g.drawAnimation(playerAnimations[player.getDirection() + (player.isMoving() ? 4 : 0)], (int) player.getX()-32, (int) player.getY()-60);
+	 	     	    
+	    //this.map.render(0, 0, 14);
+		this.map.render(0, 0, 15);
+		this.map.render(0, 0, 16);
+		this.map.render(0, 0, 17);
+		this.map.render(0, 0, 18);
+		this.map.render(0, 0, 19);
+	    
 	}
 
 	@Override
