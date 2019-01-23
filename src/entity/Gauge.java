@@ -64,7 +64,7 @@ public class Gauge {
      * @param number Number to set
      */
     public void setCurrent(int number) {
-        this.current = number
+        this.current = number;
     }
 
     /**
