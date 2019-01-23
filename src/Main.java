@@ -29,6 +29,7 @@ public class Main extends StateBasedGame {
 		AppGameContainer app;
 		try {
 			app = new AppGameContainer( new Main(name));
+			app.setIcon("resources/hud/Icon.png");
 			app.setDisplayMode( 1920, 1080, false);
 			app.start();
 		} catch (SlickException e) {

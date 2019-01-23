@@ -73,14 +73,18 @@ public class map extends BasicGameState{
 	
 	@Override
 	public void keyReleased(int key, char c) {
-		if (Input.KEY_P==key) {
-			if (!gc.isPaused()) {
-				gc.pause();
+		switch(key) {
+			case Input.KEY_P:{
+				if (!gc.isPaused()) {
+					gc.pause();
+				}
+				else {
+					gc.resume();
+				}
+			}	
+			case Input.KEY_ESCAPE:{
+				gc.exit();
 			}
-			else {
-				gc.resume();
-			}
-			
 		}
 	}
 
