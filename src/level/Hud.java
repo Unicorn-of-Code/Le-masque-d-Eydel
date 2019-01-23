@@ -23,14 +23,14 @@ public class Hud {
 	  }
 	
 	private static final int P_BAR_X = 40;
-	private static final int P_BAR_Y = 40;
-	private static final int BAR_X = 14 + P_BAR_X;
-	private static final int LIFE_BAR_Y = 8+ P_BAR_Y;
-	private static final int BAR_WIDTH = 125;
-	private static final int BAR_HEIGHT = 20;
-	private static final int MASKY= 80;
+	private static final int P_BAR_Y = 60;
+	private static final int BAR_X = 17 + P_BAR_X;
+	private static final int LIFE_BAR_Y = 11+ P_BAR_Y;
+	private static final int BAR_WIDTH = 200;
+	private static final int BAR_HEIGHT = 32;
+	private static final int MASKY= 125;
 	private static final int MASK1X = 50;
-	private static final int MASK2X= 100;
+	private static final int MASK2X= 125;
 	
 	private static final Color LIFE_COLOR = new Color(255, 0, 0);
 	private static final Color CIRCLE_COLOR = new Color(0, 0, 0);
@@ -42,15 +42,15 @@ public class Hud {
 		g.fillRect(BAR_X, LIFE_BAR_Y, .9f * BAR_WIDTH, BAR_HEIGHT);
 		g.setLineWidth(7);
 		g.setColor(CIRCLE_COLOR);
-		g.drawOval(50, 80, 40, 40);
-		g.drawOval(100, 80, 40, 40);
+		g.drawOval(50, 125, 60, 60);
+		g.drawOval(125, 125, 60, 60);
 		g.setColor(FILL_COLOR);
-		g.fillOval(50, 80, 40, 40);
-		g.fillOval(100, 80, 40, 40);
+		g.fillOval(50, 125, 60, 60);
+		g.fillOval(125, 125, 60, 60);
 		g.drawImage(this.playerBars, P_BAR_X, P_BAR_Y);
 		g.drawImage(this.mask1, MASK1X, MASKY);
 		g.drawImage(this.mask2, MASK2X, MASKY);
-		g.drawImage(this.spellbar,950, 500);
+		g.drawImage(this.spellbar,700, 750);
 	}
 }
 
