@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.Set;
+
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -7,17 +9,10 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
+import entity.attack.EntityState;
+
 
 public abstract class Entity {
-	
-	/*
-	 * Sprite
-	 */
-	private float x = 400, y = 400;
-	private int direction = 2;
-	private boolean moving = false;
-	private boolean onStair;
-	private Animation[] animations = new Animation[8];
 
     /**
      * Default constructor
