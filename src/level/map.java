@@ -1,5 +1,6 @@
 package level;
 
+import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -15,7 +16,7 @@ import entity.Player;
 
 public class map extends BasicGameState{
 
-	private GameContainer container;
+	private GameContainer gc;
 	private TiledMap map;
 	
 	private static Player player;
@@ -29,7 +30,7 @@ public class map extends BasicGameState{
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame s) throws SlickException {
-		this.container = gc;
+		this.gc = gc;
 		// load map
 		this.map = new TiledMap("resources/map/map.tmx");
 		// load sprite
@@ -68,6 +69,19 @@ public class map extends BasicGameState{
 		this.map.render(0, 0, 18);
 		this.map.render(0, 0, 19);
 	    this.hud.render(g);
+	}
+	
+	@Override
+	public void keyReleased(int key, char c) {
+		if (Input.KEY_P==key) {
+			if (!gc.isPaused()) {
+				gc.pause();
+			}
+			else {
+				gc.resume();
+			}
+			
+		}
 	}
 
 	@Override
