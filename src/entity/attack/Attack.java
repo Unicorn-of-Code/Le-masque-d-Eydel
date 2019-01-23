@@ -21,7 +21,7 @@ public abstract class Attack {
     /**
      * Stack of all the AttackState
      */
-    private Stack<AttackState> stateStack = new Stack<AttackState>();
+    Stack<AttackState> stateStack = new Stack<AttackState>();
 
     /**
      * Entity which launched the spell
@@ -33,8 +33,8 @@ public abstract class Attack {
      * @param deltaTime Delta Time
      * @return True if the Attack is finished
      */
-    public boolean update(long deltaTime) {
-        if (stateStack.peek().update(deltaTime)) {
+    public boolean update(long deltaTime,List<Entity> entities) {
+        if (stateStack.peek().update(deltaTime, entities)) {
             stateStack.pop();
         }
         return stateStack.empty();

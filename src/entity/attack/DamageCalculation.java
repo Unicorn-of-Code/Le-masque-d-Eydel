@@ -32,38 +32,39 @@ public abstract class DamageCalculation {
      * @param victim Entity victim of the Attack
      */
     public static void attributeDamage(AttackState attackState, Entity victim) {
-        Element e1 = attackState.getHitboxes().get(0).getElement();
-        Element e2 = victim.getHitbox().getElement();
         Entity launcher = attackState.getAttackProperty().getEntity();
-        float modifier;
-        boolean applyPassif = false;
-        if (isMedium(e1, e2)) {
-            modifier = medium;
-        } else if (isStrong(e1, e2)) {
-            modifier = strong;
-            applyPassif = true;
-        } else {
-            modifier = weak;
-        }
+        if (attackState.getHitboxes().get(0).getAllegency() != victim.getHitbox().getAllegency()) {
+            Element e1 = attackState.getHitboxes().get(0).getElement();
+            Element e2 = victim.getHitbox().getElement();
+            float modifier;
+            boolean applyPassif = false;
+            if (isMedium(e1, e2)) {
+                modifier = medium;
+            } else if (isStrong(e1, e2)) {
+                modifier = strong;
+                applyPassif = true;
+            } else {
+                modifier = weak;
+            }
 
-        int damage = (int)(attackState.getDamage() * modifier);
+            int damage = (int) (attackState.getDamage() * modifier);
 
-        victim.damage(damage);
+            victim.damage(damage);
 
-        if (applyPassif) {
-            switch (e1) {
-                case Fire:      // Dot target 2dps for 3s
-                    victim.addEntityState(new DotState(victim, 3, 2, 500));
-                    break;
-                case Plant:     // Life steal 0.1 * damage
-                    launcher.heal((int) (damage*0.1));
-                    break;
-                case Water:     // Slow target 0.5 of movement speed for 2s
-                    victim.addEntityState(new SlowSate(victim, 2, 0.5));
-                    break;
+            if (applyPassif) {
+                switch (e1) {
+                    case Fire:      // Dot target 2dps for 3s
+                        victim.addEntityState(new DotState(victim, 3, 2, 500));
+                        break;
+                    case Plant:     // Life steal 0.1 * damage
+                        launcher.heal((int) (damage * 0.1));
+                        break;
+                    case Water:     // Slow target 0.5 of movement speed for 2s
+                        victim.addEntityState(new SlowSate(victim, 2, 0.5));
+                        break;
+                }
             }
         }
-
     }
 
     /**

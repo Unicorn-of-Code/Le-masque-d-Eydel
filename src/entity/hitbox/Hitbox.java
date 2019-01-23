@@ -20,6 +20,8 @@ public class Hitbox {
         this.allegency = allegency;
     }
 
+    public static final float tileSize = 16f;
+
     /**
      * Shape of the hitbox
      */
