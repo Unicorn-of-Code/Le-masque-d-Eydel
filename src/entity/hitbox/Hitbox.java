@@ -8,59 +8,83 @@ import java.util.*;
 public class Hitbox {
 
     /**
-     * Default constructor
+     * Constructor
+     * @param shape Shape of the hitbox
+     * @param allegency Allegency of the hitbox
+     * @param element Element of the hitbox
      */
-    public Hitbox() {
+    public Hitbox(Shape shape, Allegency allegency, Element element) {
+        this.shape = shape;
+        this.element = element;
+        this.allegency = allegency;
     }
 
     /**
-     * 
+     * Shape of the hitbox
      */
     private Shape shape;
 
     /**
-     * 
+     * Allegency of the hitbox, who will be touched
      */
     private Allegency allegency;
 
     /**
-     * 
+     * Elementof the hitbox
      */
     private Element element;
 
     /**
-     * @param element
+     * Set the element of the hitbox
+     * @param element Element of the enumeration
      */
     public void setElement(Element element) {
-        // TODO implement here
+        this.element = element;
     }
 
     /**
-     * @param allegency
+     * Set the allegency of the hitbox
+     * @param allegency Allegency of the enumeration
      */
     public void setAllegency(Allegency allegency) {
-        // TODO implement here
+        this.allegency = allegency;
     }
 
     /**
-     * 
+     * Get Element
      */
-    public void getElement() {
-        // TODO implement here
+    public Element getElement() {
+        return element;
     }
 
     /**
-     * 
+     * Get Allegency
      */
-    public void getAllegency() {
-        // TODO implement here
+    public Allegency getAllegency() {
+        return allegency;
+    }
+
+    public boolean collision (Hitbox hitbox) {
+        return shape.intersect(hitbox.shape);
     }
 
     /**
-     * @param vector
+     * Move the hitbox from the given vector
+     * @param vector Vector of the movement
      */
     public void move(Vector2f vector) {
-        // TODO implement here
+        shape.setLocation(shape.getLocation().add(vector));
+    }
+
+    /**
+     * Move the hitbox from the given x and y
+     * @param x x to add
+     * @param y y to add
+     */
+    public void move(float x, float y) {
+        shape.setLocation(
+                shape.getLocation().getX() + x,
+                shape.getLocation().getY() + y);
     }
 
 }
