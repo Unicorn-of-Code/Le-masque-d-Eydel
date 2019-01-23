@@ -3,8 +3,6 @@ package entity.hitbox;
 import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.geom.Vector2f;
 
-import java.util.*;
-
 /**
  * Hitbox for entities
  */
