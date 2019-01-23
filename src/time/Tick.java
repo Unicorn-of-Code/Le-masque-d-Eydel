@@ -3,21 +3,28 @@ package time;
 import java.util.*;
 
 /**
- * 
+ * Timer which reset at the end
  */
 public class Tick extends Timer {
 
     /**
      * Default constructor
      */
-    public Tick() {
+    Tick(long time) {
+        super(time);
     }
 
     /**
-     * @param deltaTime
+     * update with the deltaTime
+     * @param deltaTime DeltaTime for each loop
      */
     public void update(long deltaTime) {
-        // TODO implement here
+        passed = false;
+        time += deltaTime;
+        if (time >= maxTime) {
+            time = time - maxTime;
+            passed = true;
+        }
     }
 
 }

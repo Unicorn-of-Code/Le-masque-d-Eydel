@@ -3,47 +3,50 @@ package time;
 import java.util.*;
 
 /**
- * 
+ * Abstract class which create Timers and update them
  */
 public abstract class Time {
 
-    /**
-     * Default constructor
-     */
-    public Time() {
-    }
-
+    private List<Timer> timers = new ArrayList<Timer>();
 
     /**
-     * @param time 
-     * @return
+     * Create Tick
+     * @param time Time when it has to tick
+     * @return The tick pointer
      */
     public Tick createTick(long time) {
-        // TODO implement here
-        return null;
+        Tick newTick = new Tick(time);
+        timers.add(newTick);
+        return newTick;
     }
 
     /**
-     * @param time 
-     * @return
+     * Create Timer
+     * @param time Time when it has to tick
+     * @return The Timer Pointer
      */
     public Timer createTimer(long time) {
-        // TODO implement here
-        return null;
+        Timer newTimer = new Timer(time);
+        timers.add(newTimer);
+        return newTimer;
     }
 
     /**
-     * @param deltaTime
+     * Update all the Timer and th Tick
+     * @param deltaTime Delta Time
      */
     public void update(long deltaTime) {
-        // TODO implement here
+        for (Timer t : timers) {
+            t.update(deltaTime);
+        }
     }
 
     /**
-     * @param timer
+     * Remove a Timer or a Tick
+     * @param timer The Timer or  Tick to delete
      */
     public void deleteTimer(Timer timer) {
-        // TODO implement here
+        timers.remove(timer);
     }
 
 }
