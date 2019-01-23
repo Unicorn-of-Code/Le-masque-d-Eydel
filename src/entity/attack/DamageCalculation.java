@@ -60,7 +60,7 @@ public abstract class DamageCalculation {
                         launcher.heal((int) (damage * 0.1));
                         break;
                     case Water:     // Slow target 0.5 of movement speed for 2s
-                        victim.addEntityState(new SlowSate(victim, 2, 0.5));
+                        victim.addEntityState(new SlowState(victim, 2, 0.5f));
                         break;
                 }
             }
