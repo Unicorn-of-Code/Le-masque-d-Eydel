@@ -1,13 +1,13 @@
 package entity;
 
+import input.Input;
 import org.newdawn.slick.Animation;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
 import entity.hitbox.Allegency;
 import entity.hitbox.Element;
+import org.newdawn.slick.geom.Vector2f;
 
 public class Player extends Entity {
 
@@ -41,28 +41,34 @@ public class Player extends Entity {
         }
         return animation;
     }
-    
-    public void move(GameContainer gc, int delta) {
-		if (gc.getInput().isKeyDown(Input.KEY_UP)) {
-			this.direction = 0; this.moving = true;
+
+    @Override
+	public void move (long deltaTime) {
+    	movement.set(0, 0);
+		if (Input.getUp() > 0) {
+			this.direction = 0; movement.add(new Vector2f(0, -1));
 		}
-		else if (gc.getInput().isKeyDown(Input.KEY_LEFT)) {
-			this.direction = 1; this.moving = true;
+		if (Input.getLeft() > 0) {
+			this.direction = 1; movement.add(new Vector2f( -1, 0));
 		}
-		else if (gc.getInput().isKeyDown(Input.KEY_DOWN)) {
-			this.direction = 2; this.moving = true;
+			if (Input.getDown() > 0) {
+			this.direction = 2; movement.add(new Vector2f(0, 1));
 		}
-		else if (gc.getInput().isKeyDown(Input.KEY_RIGHT)) {
-			this.direction = 3; this.moving = true;
+				if (Input.getRight() > 0) {
+			this.direction = 3; movement.add(new Vector2f(1, 0 ));
 		}
-		else {
-			this.moving = false;
-		}
-		this.update(delta);
+		fixMovementWithSpeedAndDelta(deltaTime);
+	}
+
+	private void fixMovementWithSpeedAndDelta (long deltaTime) {
+    	movement.normalise().scale(movementSpeed).scale(deltaTime);
 	}
 	
 	public Animation[] getAnimation() {
 		return this.animations;
 	}
 
+	public void draw() {
+    	// TODO : Retrieve from map
+	}
 }

@@ -72,7 +72,8 @@ public class map extends BasicGameState{
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame s, int delta) throws SlickException {
-		player.move(gc, delta);
+		player.update(gc, delta);
+
 	}
 	
 	@Override

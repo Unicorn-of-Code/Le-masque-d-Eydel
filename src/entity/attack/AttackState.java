@@ -119,9 +119,7 @@ public abstract class AttackState {
         for (Entity entity : entities) {
             for (Hitbox hitbox : hitboxes) {
                 if (hitbox.collision(entity.getHitbox())) {
-                    if (hitbox.getAllegency() != entity.getHitbox().getAllegency()) {
-                        DamageCalculation.attributeDamage(this, entity);
-                    }
+                    DamageCalculation.attributeDamage(this, entity);
                 }
             }
         }
@@ -129,13 +127,15 @@ public abstract class AttackState {
 
     public boolean moveHitboxes(long deltaTime) {
         Iterator<Hitbox> i = hitboxes.iterator();
-        for (Hitbox hitbox = i.next(); i.hasNext(); hitbox = i.next()) {
+        while (i.hasNext()) {
+            Hitbox hitbox = i.next();
             Vector2f currentMovement = new Vector2f(movement).scale(deltaTime);
             hitbox.move(currentMovement);
             currentRange += currentMovement.length();
             if (currentRange >= maxRange) {
                 i.remove();
             }
+
         }
         if (hitboxes.isEmpty()) {
             return true;
