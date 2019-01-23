@@ -29,14 +29,15 @@ public class map extends BasicGameState{
 	public void init(GameContainer gc, StateBasedGame s) throws SlickException {
 		this.container = gc;
 		// load map
-		this.map = new TiledMap("resources/map/map2.tmx");
+		this.map = new TiledMap("resources/map/map.tmx");
 		// load sprite
-		player = new Player();
+		player = new Player(400, 400);
 		playerAnimations = player.getAnimation();
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame s, Graphics g) throws SlickException {
+		g.scale(2.5f, 2.5f);
 		this.map.render(0, 0, 0);
 		this.map.render(0, 0, 1);
 		this.map.render(0, 0, 2);
@@ -54,30 +55,20 @@ public class map extends BasicGameState{
 	    
 	 // Render sprite + shadow
 		g.setColor(new Color(0, 0, 0, .5f));
-	    g.fillOval(player.getX() - 30, player.getY() - 23, 32, 16);
+	    g.fillOval(player.getX() - 31, player.getY() - 40, 16, 8);
 	    g.drawAnimation(playerAnimations[player.getDirection() + (player.isMoving() ? 4 : 0)], (int) player.getX()-32, (int) player.getY()-60);
-	 	     	    
+	 	
 	    this.map.render(0, 0, 14);
 		this.map.render(0, 0, 15);
 		this.map.render(0, 0, 16);
 		this.map.render(0, 0, 17);
 		this.map.render(0, 0, 18);
 		this.map.render(0, 0, 19);
-	    
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame s, int delta) throws SlickException {
-		player.move(gc);
-		if (player.isMoving()) {
-	        switch (player.getDirection()) {
-	            case 0: player.setY(player.getY() - .1f * delta); break;
-	            case 1: player.setX(player.getX() - .1f * delta); break;
-	            case 2: player.setY(player.getY() + .1f * delta); break;
-	            case 3: player.setX(player.getX() + .1f * delta); break;
-	            //case 4: this.y -= .1f * delta; this.x -= .1f * delta; break;
-	        }
-	    }
+		player.move(gc, delta);
 	}
 	
 	@Override

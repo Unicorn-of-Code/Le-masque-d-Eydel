@@ -6,23 +6,20 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
-public class Player {
+import entity.hitbox.Allegency;
+import entity.hitbox.Element;
+
+public class Player extends Entity {
 
 	private Animation[] animations = new Animation[8];
-	private float x, y;
-	private int direction;
-	private boolean moving;
 
 	/**
      * Default constructor
      */
-    public Player() {
-    	setX(400);
-    	setY(400);
-    	setDirection(2);
-    	setMoving(false);
+    public Player(float x, float y) {
+    	super(x, y, 36.0f, 0.1f, Allegency.Ally, Element.Water);
 		try {
-			SpriteSheet spriteSheet = new SpriteSheet("resources/sprites/people/playerWater.png", 36, 50);
+			SpriteSheet spriteSheet = new SpriteSheet("resources/sprites/people/PlayerWater.png", 18, 25);
 			this.animations[0] = loadAnimation(spriteSheet, 0, 1, 0);
 		    this.animations[1] = loadAnimation(spriteSheet, 0, 1, 1);
 		    this.animations[2] = loadAnimation(spriteSheet, 0, 1, 2);
@@ -45,7 +42,7 @@ public class Player {
         return animation;
     }
     
-    public void move(GameContainer gc) {
+    public void move(GameContainer gc, int delta) {
 		if (gc.getInput().isKeyDown(Input.KEY_UP)) {
 			this.direction = 0; this.moving = true;
 		}
@@ -61,38 +58,7 @@ public class Player {
 		else {
 			this.moving = false;
 		}
-	}
-
-	public float getX() {
-		return x;
-	}
-
-	public void setX(float x) {
-		this.x = x;
-	}
-
-	public float getY() {
-		return y;
-	}
-
-	public void setY(float y) {
-		this.y = y;
-	}
-
-	public int getDirection() {
-		return direction;
-	}
-
-	public void setDirection(int direction) {
-		this.direction = direction;
-	}
-
-	public boolean isMoving() {
-		return moving;
-	}
-
-	public void setMoving(boolean moving) {
-		this.moving = moving;
+		this.update(delta);
 	}
 	
 	public Animation[] getAnimation() {
