@@ -5,19 +5,20 @@ import java.util.*;
 /**
  * Abstract class which create Timers and update them
  */
-public abstract class Time {
+public final class Time {
 
     /**
      * List of the timers
      */
-    private List<Timer> timers = new ArrayList<Timer>();
+    private static List<TimerType> timers = new ArrayList<TimerType>();
+
 
     /**
      * Create Tick
      * @param time Time when it has to tick
      * @return The tick pointer
      */
-    public Tick createTick(long time) {
+    public static Tick createTick(long time) {
         Tick newTick = new Tick(time);
         timers.add(newTick);
         return newTick;
@@ -28,7 +29,7 @@ public abstract class Time {
      * @param time Time when it has to tick
      * @return The Timer Pointer
      */
-    public Timer createTimer(long time) {
+    public static Timer createTimer(long time) {
         Timer newTimer = new Timer(time);
         timers.add(newTimer);
         return newTimer;
@@ -39,7 +40,7 @@ public abstract class Time {
      * @param deltaTime Delta Time
      */
     public void update(long deltaTime) {
-        for (Timer t : timers) {
+        for (TimerType t : timers) {
             t.update(deltaTime);
         }
     }

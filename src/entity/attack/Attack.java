@@ -6,7 +6,7 @@ import entity.Player;
 import java.util.*;
 
 /**
- * 
+ * Attack define an Attack with differnet states
  */
 public abstract class Attack {
 

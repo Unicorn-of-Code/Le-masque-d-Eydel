@@ -1,5 +1,9 @@
 package entity;
 
+
+import entity.attack.EntityState;
+import entity.hitbox.Hitbox;
+
 import java.util.*;
 
 /**
@@ -41,7 +45,7 @@ public abstract class Entity {
     /**
      * 
      */
-    private Set<EntityState> entityStates;
+    private List<EntityState> entityStates = new ArrayList<EntityState>();
 
     /**
      * 
@@ -57,4 +61,27 @@ public abstract class Entity {
         // TODO implement here
     }
 
+    /**
+     *
+     * @param amount
+     */
+    public void heal(int amount) {
+        // TODO implement here
+    }
+
+    /**
+     *
+     * @param amount
+     */
+    public void damage(int amount) {
+        // TODO implement here
+    }
+
+    /**
+     *
+     * @param entityState
+     */
+    public void addEntityState (EntityState entityState) {
+
+    }
 }

@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Timer which reset at the end
  */
-public class Tick extends Timer {
+public final class Tick extends TimerType {
 
     /**
      * Default constructor
@@ -15,16 +15,24 @@ public class Tick extends Timer {
     }
 
     /**
+     * Number of time done
+     */
+    private int numberPassed = 0;
+
+    /**
      * update with the deltaTime
      * @param deltaTime DeltaTime for each loop
      */
     public void update(long deltaTime) {
-        passed = false;
+        numberPassed = 0;
         time += deltaTime;
-        if (time >= maxTime) {
-            time = time - maxTime;
-            passed = true;
+        long mod = time % maxTime;
+        if (mod != 0) {
+            time = time - maxTime*mod;
         }
     }
 
+    public int getNumberPassed() {
+        return numberPassed;
+    }
 }

@@ -39,7 +39,7 @@ public abstract class AttackState {
     private Vector2f movement;
 
     /**
-     * 
+     * The Attack which this AttackState is based on based
      */
     private Attack attackProperty;
 
@@ -55,8 +55,9 @@ public abstract class AttackState {
      */
     boolean update(long deltaTime) {
         for (Hitbox hitbox : hitboxes) {
-
+            hitbox.move(movement);
         }
+        return false;
     }
 
     /**

@@ -5,34 +5,24 @@ import java.util.*;
 /**
  * Timer wich doesn't update at the end
  */
-public class Timer {
+public final class Timer extends TimerType {
 
     /**
      * Default constructor
      * @param time Limit of the timer
      */
     Timer(long time) {
-        this.maxTime = time;
+        super(time);
     }
 
     /**
      * Boolean which show if the time is passed
      */
-    boolean passed;
-
-    /**
-     * Actual time passed
-     */
-    long time = 0;
-
-    /**
-     * Max Time to reach
-     */
-    long maxTime;
+    private boolean passed;
 
     /**
      * Update the timer with the deltaTime
-     * @param deltaTime Deta Time
+     * @param deltaTime Delta Time
      */
     public void update(long deltaTime) {
         if (!passed) {
