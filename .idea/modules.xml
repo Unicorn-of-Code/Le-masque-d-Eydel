@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Le-masque-d-Eydel.iml" filepath="$PROJECT_DIR$/Le-masque-d-Eydel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Le-masque-d-Eydel.iml" filepath="$PROJECT_DIR$/.idea/Le-masque-d-Eydel.iml" />
     </modules>
   </component>
 </project>
