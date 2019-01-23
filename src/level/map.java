@@ -1,7 +1,5 @@
 package level;
 
-import entity.Entity;
-import entity.attack.Attack;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -15,9 +13,6 @@ import org.newdawn.slick.tiled.TiledMap;
 
 import entity.Player;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class map extends BasicGameState{
 
 	private GameContainer container;
@@ -25,9 +20,9 @@ public class map extends BasicGameState{
 	
 	private static Player player;
 	private static Animation[] playerAnimations; 
-	private List<Attack> attacks = new ArrayList<Attack>();
-	private List<Entity> entities = new ArrayList<Entity>();
-
+	
+	private Hud hud = new Hud();
+	
 	public map(int state) {
 		
 	}
@@ -40,6 +35,7 @@ public class map extends BasicGameState{
 		// load sprite
 		player = new Player(400, 400);
 		playerAnimations = player.getAnimation();
+		this.hud.init();
 	}
 
 	@Override
@@ -71,6 +67,7 @@ public class map extends BasicGameState{
 		this.map.render(0, 0, 17);
 		this.map.render(0, 0, 18);
 		this.map.render(0, 0, 19);
+	    this.hud.render(g);
 	}
 
 	@Override
@@ -81,14 +78,6 @@ public class map extends BasicGameState{
 	@Override
 	public int getID() {
 		return 0;
-	}
-
-	public void addAttack (Attack attack) {
-		this.attacks.add(attack);
-	}
-
-	public List<Entity> getEntities () {
-		return entities;
 	}
 }
 	
