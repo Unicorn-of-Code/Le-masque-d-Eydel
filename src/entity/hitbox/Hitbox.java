@@ -1,9 +1,12 @@
 package entity.hitbox;
 
+import org.newdawn.slick.geom.Shape;
+import org.newdawn.slick.geom.Vector2f;
+
 import java.util.*;
 
 /**
- * 
+ * Hitbox for entities
  */
 public class Hitbox {
 
@@ -65,7 +68,7 @@ public class Hitbox {
     }
 
     public boolean collision (Hitbox hitbox) {
-        return shape.intersect(hitbox.shape);
+        return shape.intersects(hitbox.shape);
     }
 
     /**
