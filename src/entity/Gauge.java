@@ -21,7 +21,7 @@ public class Gauge {
     private int max;
 
     /**
-     * enttity's current hp
+     * entity's current hp
      */
     private int current;
 
@@ -73,6 +73,13 @@ public class Gauge {
      */
     public void set0() {
         this.current = 0;
+    }
+
+    /**
+     * @return true if this.current = 0, else false
+     */
+    public boolean isEmpty(){
+        return this.current == 0;
     }
 
 }
