@@ -1,2 +1,4 @@
-.idea/*
+\.idea/.*
 Le-masque-d-Eydel.iml
+\.idea/worspace.xml
+
