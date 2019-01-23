@@ -1,5 +1,6 @@
-\.idea/.*
-Le-masque-d-Eydel.iml
-\.idea/worspace.xml
 
 .idea/
+.classpath
+.project
+.settings/
+.Le-masque-d-Eydel.iml

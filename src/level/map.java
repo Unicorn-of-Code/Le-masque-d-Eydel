@@ -48,7 +48,7 @@ public class map extends BasicGameState{
 	    
 	 // Render sprite + shadow
  		g.setColor(new Color(0, 0, 0, .5f));
- 	    g.fillOval(player.getX() - 16, player.getY() - 8, 32, 16);
+ 	    g.fillOval(player.getX() - 30, player.getY() - 23, 32, 16);
  	    g.drawAnimation(playerAnimations[player.getDirection() + (player.isMoving() ? 4 : 0)], (int) player.getX()-32, (int) player.getY()-60);
 	 	     	    
 	    this.map.render(0, 0, 8);
@@ -60,10 +60,10 @@ public class map extends BasicGameState{
 		player.move(gc);
 		if (player.isMoving()) {
 	        switch (player.getDirection()) {
-	            case 0: player.setY(player.getY() - 1 * delta); break;
-	            case 1: player.setX(player.getX() - 1 * delta); break;
-	            case 2: player.setY(player.getY() + 1 * delta); break;
-	            case 3: player.setX(player.getX() + 1 * delta); break;
+	            case 0: player.setY(player.getY() - .1f * delta); break;
+	            case 1: player.setX(player.getX() - .1f * delta); break;
+	            case 2: player.setY(player.getY() + .1f * delta); break;
+	            case 3: player.setX(player.getX() + .1f * delta); break;
 	            //case 4: this.y -= .1f * delta; this.x -= .1f * delta; break;
 	        }
 	    }
