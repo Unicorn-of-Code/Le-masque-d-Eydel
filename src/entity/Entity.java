@@ -1,24 +1,13 @@
 package entity;
 
-<<<<<<< HEAD
+
 
 import entity.attack.EntityState;
 import entity.hitbox.Hitbox;
 
 import java.util.*;
-=======
-import java.util.Set;
-
-import org.newdawn.slick.Animation;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
-import org.newdawn.slick.SlickException;
-
 import entity.attack.EntityState;
 
->>>>>>> 7df80eb97ee73465a553909615c11c6b6422b928
 
 public abstract class Entity {
 
