@@ -3,61 +3,79 @@ package entity;
 import java.util.*;
 
 /**
- * 
+ * Gauge for things
  */
-public class gauge {
+public class Gauge {
 
     /**
      * Default constructor
+     * @param amount int amount of the max
      */
-    public gauge() {
+    public Gauge(int amount) {
+        this.max = amount;
+        this.current = amount;
     }
 
     /**
-     * 
+     * Max to reach
      */
-    private void maxLife;
+    private int max;
 
     /**
-     * 
+     * Current amount of the gauge
      */
-    private void current;
+    private int current;
 
     /**
-     * @param add
+     * add an amount to current
+     * @param add amount to add
      */
     public void add(int add) {
-        // TODO implement here
+        current += add;
+        if (current>max){
+            current = max;
+        }
     }
 
     /**
-     * @param rem 
-     * @return
+     * Remove from the amount
+     * @param rem amount to remove
+     * @return true if 0 reached
      */
     public boolean rem(int rem) {
-        // TODO implement here
+        current += rem;
+        if (current<=0){
+            current = 0;
+            return true;
+        }
         return false;
     }
 
     /**
-     * 
+     * set a new Maximum
+     * @param newMax New Max
      */
-    public void setMax() {
-        // TODO implement here
+    public void setMax(int newMax) {
+        this.max = newMax;
     }
 
     /**
-     * @param number
+     * set current
+     * @param number Number to set
      */
     public void setCurrent(int number) {
-        // TODO implement here
+        this.current = number;
     }
 
     /**
-     * 
+     * set To 0
      */
     public void set0() {
-        // TODO implement here
+        current = 0;
+    }
+
+    public boolean isEmpty () {
+        return current == 0;
     }
 
 }
