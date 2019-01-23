@@ -29,7 +29,7 @@ public class map extends BasicGameState{
 	public void init(GameContainer gc, StateBasedGame s) throws SlickException {
 		this.container = gc;
 		// load map
-		this.map = new TiledMap("resources/map/map.tmx");
+		this.map = new TiledMap("resources/map/map2.tmx");
 		// load sprite
 		player = new Player();
 		playerAnimations = player.getAnimation();
