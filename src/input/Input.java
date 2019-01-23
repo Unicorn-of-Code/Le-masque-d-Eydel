@@ -74,7 +74,7 @@ public final class Input {
     public static void update(GameContainer gc) {
         reset();
         org.newdawn.slick.Input in = gc.getInput();
-        up = (gc.getInput().isKeyDown(org.newdawn.slick.Input.KEY_Z)? 1 : 0;
+        up = (gc.getInput().isKeyDown(org.newdawn.slick.Input.KEY_Z))? 1 : 0;
         left = (gc.getInput().isKeyDown(org.newdawn.slick.Input.KEY_Q))? 1 : 0;
         down = (gc.getInput().isKeyDown(org.newdawn.slick.Input.KEY_S))? 1 : 0;
         right = (gc.getInput().isKeyDown(org.newdawn.slick.Input.KEY_D))? 1 : 0;
