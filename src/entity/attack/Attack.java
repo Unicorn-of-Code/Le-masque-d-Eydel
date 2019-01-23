@@ -2,6 +2,8 @@ package entity.attack;
 
 import java.util.*;
 
+import entity.Entity;
+
 /**
  * 
  */
@@ -21,7 +23,8 @@ public abstract class Attack {
     /**
      * 
      */
-    private Entity entity;
+    
+    private Entity entity;//lanceur du sort
 
     /**
      * @param delta 
@@ -35,15 +38,14 @@ public abstract class Attack {
     /**
      * @return
      */
-    public Player getPlayer() {
-        // TODO implement here
-        return null;
+    public Entity getEntity() {
+        return this.entity;
     }
 
     /**
      * @param player
      */
-    public void Attack(Player player) {
+    public void Attack(Entity entity) {
         // TODO implement here
     }
 

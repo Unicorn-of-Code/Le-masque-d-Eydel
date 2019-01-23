@@ -3,83 +3,61 @@ package entity;
 import java.util.*;
 
 /**
- * Entity's hp gauge
+ * 
  */
-public class Gauge {
+public class gauge {
 
     /**
-     * Create a gauge with max as max
-     * @param max int
+     * Default constructor
      */
-    public Gauge(int max) {
-        this.max = max;
+    public gauge() {
     }
 
     /**
-     * entity's max hp
+     * 
      */
-    private int max;
+    private void maxLife;
 
     /**
-     * entity's current hp
+     * 
      */
-    private int current;
+    private void current;
 
     /**
-     * Add add hp to this.current
-     * @param amount int
+     * @param add
      */
-    public void add(int amount) {
-        if (this.current + amount <= max) {
-            this.current += amount;
-        } else {
-            this.current = max;
-        }
+    public void add(int add) {
+        // TODO implement here
     }
 
     /**
-     * Remove amount to this.current if this.current > amount else set this to 0
-     * @param amount int
-     * Return true if this.current > 0 else return false
-     * @return boolean
+     * @param rem 
+     * @return
      */
-    public boolean rem(int amount) {
-        if (this.current - amount <= 0) {
-            this.current -= amount;
-        } else {
-            this.set0();
-        }
-        return this.current > 0;
+    public boolean rem(int rem) {
+        // TODO implement here
+        return false;
     }
 
     /**
-     * Set this.maxLife to maxLife
-     * @param maxLife int
+     * 
      */
-    public void setMax(int maxLife) {
-        this.max = maxLife;
+    public void setMax() {
+        // TODO implement here
     }
 
     /**
-     * Set this.current to current
-     * @param current int
+     * @param number
      */
-    public void setCurrent(int current) {
-        this.current = current;
+    public void setCurrent(int number) {
+        // TODO implement here
     }
 
     /**
-     * Set this.current to 0
+     * 
      */
     public void set0() {
-        this.current = 0;
-    }
-
-    /**
-     * @return true if this.current = 0, else false
-     */
-    public boolean isEmpty(){
-        return this.current == 0;
+        // TODO implement here
     }
 
 }

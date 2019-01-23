@@ -3,62 +3,38 @@ package time;
 import java.util.*;
 
 /**
- * Timer wich doesn't update at the end
+ * 
  */
 public class Timer {
 
     /**
      * Default constructor
-     * @param time Limit of the timer
      */
-    Timer(long time) {
-        this.maxTime = time;
+    public Timer() {
     }
 
     /**
-     * Boolean which show if the time is passed
+     * 
      */
-    boolean passed;
+    protected boolean passed;
 
     /**
-     * Actual time passed
+     * 
      */
-    long time = 0;
+    protected long time;
 
     /**
-     * Max Time to reach
-     */
-    long maxTime;
-
-    /**
-     * Update the timer with the deltaTime
-     * @param deltaTime Deta Time
+     * @param deltaTime
      */
     public void update(long deltaTime) {
-        if (!passed) {
-            time += deltaTime;
-
-            if (time >= maxTime) {
-                time = maxTime;
-                passed = true;
-            }
-        }
+        // TODO implement here
     }
 
     /**
-     * Reset the Timer to 0 with passed = false
+     * 
      */
     public void reset() {
-        passed = false;
-        time = 0;
-    }
-
-    /**
-     * Return the boolean passed
-     * @return passed
-     */
-    public boolean getPassed () {
-        return passed;
+        // TODO implement here
     }
 
 }
