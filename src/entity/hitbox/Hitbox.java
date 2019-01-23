@@ -75,7 +75,31 @@ public class Hitbox {
     	return shape;
     }
 
+    /**
+     * Test collision
+     * @param hitbox Other hitbox
+     * @return True if collide
+     */
     public boolean collision (Hitbox hitbox) {
         return shape.intersects(hitbox.shape);
+    }
+
+    /**
+     * move the hitbox
+     * @param x x to add
+     * @param y y to add
+     */
+    public void move(float x, float y) {
+        shape.setX(shape.getX() + x);
+        shape.setY(shape.getY() + y);
+    }
+
+    /**
+     * Move the hitbox
+     * @param v Vector to add
+     */
+    public void move(Vector2f v) {
+        shape.setX(shape.getX() + v.getX());
+        shape.setY(shape.getY() + v.getY());
     }
 }
