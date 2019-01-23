@@ -3,52 +3,51 @@ package time;
 import java.util.*;
 
 /**
- * Timer wich doesn't update at the end
+ * 
  */
 public final class Timer extends TimerType {
 
     /**
      * Default constructor
-     * @param time Limit of the timer
      */
+<<<<<<< HEAD
     Timer(long time) {
         super(time);
+=======
+    public Timer() {
+>>>>>>> 7df80eb97ee73465a553909615c11c6b6422b928
     }
 
     /**
-     * Boolean which show if the time is passed
+     * 
      */
+<<<<<<< HEAD
     private boolean passed;
 
     /**
      * Update the timer with the deltaTime
      * @param deltaTime Delta Time
+=======
+    protected boolean passed;
+
+    /**
+     * 
+     */
+    protected long time;
+
+    /**
+     * @param deltaTime
+>>>>>>> 7df80eb97ee73465a553909615c11c6b6422b928
      */
     public void update(long deltaTime) {
-        if (!passed) {
-            time += deltaTime;
-
-            if (time >= maxTime) {
-                time = maxTime;
-                passed = true;
-            }
-        }
+        // TODO implement here
     }
 
     /**
-     * Reset the Timer to 0 with passed = false
+     * 
      */
     public void reset() {
-        passed = false;
-        time = 0;
-    }
-
-    /**
-     * Return the boolean passed
-     * @return passed
-     */
-    public boolean getPassed () {
-        return passed;
+        // TODO implement here
     }
 
 }
