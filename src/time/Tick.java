@@ -3,18 +3,18 @@ package time;
 import java.util.*;
 
 /**
- * 
+ * Timer which reset at the end
  */
 public final class Tick extends TimerType {
 
     /**
      * Default constructor
      */
-    public Tick() {
+    Tick(long time) {
+        super(time);
     }
 
     /**
-<<<<<<< HEAD
      * Number of time done
      */
     private int numberPassed = 0;
@@ -30,12 +30,6 @@ public final class Tick extends TimerType {
         if (mod != 0) {
             time = time - maxTime*mod;
         }
-=======
-     * @param deltaTime
-     */
-    public void update(long deltaTime) {
-        // TODO implement here
->>>>>>> 7df80eb97ee73465a553909615c11c6b6422b928
     }
 
     public int getNumberPassed() {
