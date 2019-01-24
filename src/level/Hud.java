@@ -25,6 +25,8 @@ public class Hud {
 	private Image spellbarplant;
 	private Image scrollup;
 	private Image scrolldown;
+	private Image iconwater1;
+	private Image iconfire1;
 
 	public void init() throws SlickException {
 	    this.playerBars = new Image("resources/hud/health_bar_decoration.png");
@@ -36,6 +38,8 @@ public class Hud {
 	    this.spellbarplant = new Image("resources/hud/spellbarplant.png");
 	    this.scrollup = new Image("resources/hud/scrollup.png");
 	    this.scrolldown = new Image("resources/hud/scrolldown.png");
+	    this.iconwater1=new Image("resources/hud/Iconwater1.png");
+	    this.iconfire1=new Image("resources/hud/Iconfire1.png");
 	  }
 	
 	private static final int P_BAR_X = 40;
@@ -71,13 +75,16 @@ public class Hud {
 		case Water:{
 			g.drawImage(this.firemask, MASKGX, MASKY);
 			g.drawImage(this.plantmask, MASKDX, MASKY);
+			g.drawImage(this.iconwater1,700, 875);
 			g.drawImage(this.spellbarwater,700, 750);
 			break;
 		}
 		case Fire:{
 			g.drawImage(this.watermask, MASKGX, MASKY);
 			g.drawImage(this.plantmask, MASKDX, MASKY);
+			
 			g.drawImage(this.spellbarfire,700, 750);
+			g.drawImage(this.iconfire1,750, 910);
 			break;
 		}
 		case Plant:{
