@@ -3,8 +3,10 @@ package entity;
 import java.util.*;
 import java.util.stream.IntStream;
 
+import entity.attitude.Attitude;
 import entity.hitbox.Allegency;
 import entity.hitbox.Element;
+import level.Map;
 import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.geom.Shape;
 
@@ -14,6 +16,7 @@ import org.newdawn.slick.geom.Shape;
  */
 public abstract class Enemy extends Entity {
 
+    private Attitude attitude;
     private Shape vision;
 
     /**
@@ -21,8 +24,9 @@ public abstract class Enemy extends Entity {
      * @param x,y : position
      * @param size : hitbox size
      */
-    public Enemy(float x, float y, float size, float movementSpeed, Allegency allegency, Element element, float visionRange) {
-        super(x, y, size, movementSpeed, allegency, element);
+    public Enemy(float x, float y, float size, float movementSpeed, Allegency allegency,
+                 Element element, float visionRange, Attitude attitude) {
+        super(x, y, size, movementSpeed, Allegency.Ennemy, element);
         this.vision = new Circle(this.getHitbox().getShape().getX(), this.getHitbox().getShape().getY(), visionRange);
     }
 
@@ -33,18 +37,22 @@ public abstract class Enemy extends Entity {
     }
     */
 
-    public void move(Player player, float delta) {
+    @Override
+    void control (long deltaTime, Map map) {
+        move(deltaTime, map.getPlayer());
+    }
+
+    public void move(float deltaTime, Player player) {
         //if the enemy's moving
         if (this.isMoving()) {
 
             float playerx = player.getHitbox().getShape().getX();
             float playery = player.getHitbox().getShape().getY();
-            Circle visionRange =  new Circle(this.getHitbox().getShape().getX(), this.getHitbox().getShape().getY(), this.visionRange);
             float x = this.getHitbox().getShape().getX();
             float y = this.getHitbox().getShape().getY();
 
             //if it's in range of the player
-            if (visionRange.contains(playerx, playery)) {
+            if (vision.contains(playerx, playery)) {
                 Circle attackRange =  new Circle(this.getHitbox().getShape().getX(), this.getAttack().getHitbox().getShape().getY(), this.attackRange);
                 if (attackRange >= 5555) {
                     this.attack();

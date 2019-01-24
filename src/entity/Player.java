@@ -63,7 +63,7 @@ public class Player extends Entity {
     @Override
 	void control (long deltaTime, Map map) {
     	switchElement();
-    	attack();
+    	attack(map);
     	move(deltaTime);
 	}
 
