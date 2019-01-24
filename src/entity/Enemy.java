@@ -6,31 +6,32 @@ import java.util.stream.IntStream;
 import entity.hitbox.Allegency;
 import entity.hitbox.Element;
 import org.newdawn.slick.geom.Circle;
+import org.newdawn.slick.geom.Shape;
 
 
 /**
  * The enemies of the forest
  */
-public class Ennemy extends Entity {
+public abstract class Enemy extends Entity {
 
-    private float visionRange;
+    private Shape vision;
 
     /**
      * Initialize a new entity which has a vision range
      * @param x,y : position
      * @param size : hitbox size
      */
-    public Ennemy(float x, float y, float size, float movementSpeed, Allegency allegency, Element element, float visionRange) {
+    public Enemy(float x, float y, float size, float movementSpeed, Allegency allegency, Element element, float visionRange) {
         super(x, y, size, movementSpeed, allegency, element);
-        this.visionRange = visionRange;
+        this.vision = new Circle(this.getHitbox().getShape().getX(), this.getHitbox().getShape().getY(), visionRange);
     }
 
-    public Ennemy() {
+    /* Test
+    public Enemy() {
         super(400, 400, 36.0f, 0.1f, Allegency.Ally, Element.Water);
         this.visionRange = 150;
     }
-
-
+    */
 
     public void move(Player player, float delta) {
         //if the enemy's moving
