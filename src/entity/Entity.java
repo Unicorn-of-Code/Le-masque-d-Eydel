@@ -68,6 +68,10 @@ public abstract class Entity {
         return this.hitbox;
     }
 
+    public float getMovementSpeed() {
+    	return (float)this.movementSpeed;
+	}
+
     /**
      * Update the whole entity
 	 * @param deltaTime Delta Time
