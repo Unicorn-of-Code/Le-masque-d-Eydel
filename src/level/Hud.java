@@ -2,9 +2,11 @@ package level;
 
 
 import org.newdawn.slick.Color;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.StateBasedGame;
 
 import entity.Player;
 import entity.hitbox.Element;
@@ -70,27 +72,26 @@ public class Hud {
 		g.fillOval(125, 125, 60, 60);
 		g.drawImage(this.playerBars, P_BAR_X, P_BAR_Y);
 		switch(element) {
-		case Water:{
-			g.drawImage(this.firemask, MASKGX, MASKY);
-			g.drawImage(this.plantmask, MASKDX, MASKY);
-			g.drawImage(this.iconwater1,700, 875);
-			g.drawImage(this.spellbarwater,700, 750);
-			break;
-		}
-		case Fire:{
-			g.drawImage(this.watermask, MASKGX, MASKY);
-			g.drawImage(this.plantmask, MASKDX, MASKY);
+			case Water:
+				g.drawImage(this.firemask, MASKGX, MASKY);
+				g.drawImage(this.plantmask, MASKDX, MASKY);
+				g.drawImage(this.iconwater1,700, 875);
+				g.drawImage(this.spellbarwater,700, 750);
+				break;
 			
-			g.drawImage(this.spellbarfire,700, 750);
-			g.drawImage(this.iconfire1,750, 910);
-			break;
-		}
-		case Plant:{
-			g.drawImage(this.firemask, MASKGX, MASKY);
-			g.drawImage(this.watermask, MASKDX, MASKY);
-			g.drawImage(this.spellbarplant,700, 750);
-			break;
-		}
+			case Fire:
+				g.drawImage(this.watermask, MASKGX, MASKY);
+				g.drawImage(this.plantmask, MASKDX, MASKY);
+				
+				g.drawImage(this.spellbarfire,700, 750);
+				g.drawImage(this.iconfire1,750, 910);
+				break;
+			
+			case Plant:
+				g.drawImage(this.firemask, MASKGX, MASKY);
+				g.drawImage(this.watermask, MASKDX, MASKY);
+				g.drawImage(this.spellbarplant,700, 750);
+				break;
 		}
 		
 		g.drawImage(this.scrolldown,47,160);

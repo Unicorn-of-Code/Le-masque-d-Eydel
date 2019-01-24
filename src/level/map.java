@@ -113,6 +113,8 @@ public class Map extends BasicGameState{
 
 		// Update Player
 		player.update(delta, this);
+		System.err.println(player.getHitbox().getElement());
+		System.err.println(Input.isSwitchRight());
 		
 		// Update Camera
 		this.camera.update(gc);
