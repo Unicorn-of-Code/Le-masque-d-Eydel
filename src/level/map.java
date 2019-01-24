@@ -22,7 +22,7 @@ public class map extends BasicGameState{
 	private static Player player;
 	private static Animation[] playerAnimations; 
 	
-	private Hud hud = new Hud();
+	private Hud hud;
 	
 	public map(int state) {
 		
@@ -36,6 +36,7 @@ public class map extends BasicGameState{
 		// load sprite
 		player = new Player(400, 400);
 		playerAnimations = player.getAnimation();
+		hud=new Hud(player);
 		this.hud.init();
 	}
 
