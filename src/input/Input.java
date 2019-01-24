@@ -85,8 +85,8 @@ public final class Input {
         a3 = in.isKeyDown(org.newdawn.slick.Input.KEY_A);
         a4 = in.isKeyDown(org.newdawn.slick.Input.KEY_E);
         dodge = in.isKeyDown(org.newdawn.slick.Input.KEY_SPACE);
-        mouseX = in.getMouseX();
-        mouseY = in.getMouseY();
+        mouseX = in.getAbsoluteMouseX();
+        mouseY = in.getAbsoluteMouseY();
     }
 
     private static void reset(){

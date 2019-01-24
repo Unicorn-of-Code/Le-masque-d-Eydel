@@ -35,6 +35,8 @@ public abstract class Entity {
     	this.movementSpeed = movementSpeed;	// pixel / ms
     	hitbox = new Hitbox(new Rectangle(x, y, size, size), allegency, element);
     	this.life = new Gauge(100);
+    	this.armor = new Gauge(100);
+    	armor.set0();
     }
     
     public float getX() {
@@ -78,9 +80,9 @@ public abstract class Entity {
      * Update the whole entity
 	 * @param deltaTime Delta Time
      */
-    public boolean update(long deltaTime, Map map) {
+    public boolean update(long deltaTime, Map map, float xCam, float yCam, Player player) {
     	// Resolve if Move
-		control(deltaTime, map);
+		control(deltaTime, map, xCam, yCam, player);
 
     	// Resolve EntityState
 		Iterator<EntityState> eSIt = entityStates.iterator();
@@ -96,6 +98,7 @@ public abstract class Entity {
 	        hitbox.move(movement);
 	        // If collision decort
 	        boolean cont = true;
+	        /*
 	        for (Entity entity : map.getEntities()) {
 	        	if (this != entity) {
 	        		if (this.getHitbox().collision(entity.getHitbox())) {
@@ -105,16 +108,15 @@ public abstract class Entity {
 	        		}
 	        	}
 	        }
-	        if (cont) {
-	        	if (map.isCollision(this.getX()-this.getHitbox().getShape().getWidth(), this.getY()-this.getHitbox().getShape().getHeight())) {
-		        	hitbox.move(movement.negate());
-		        }   
+	        if (cont) {*/
+        	if (map.isCollision(this.getX()+16, this.getY()+16)) {
+	        	hitbox.move(movement.negate());
 	        }
     	}
     	return life.isEmpty();
     }
 
-    abstract void control (long deltaTime, Map map);
+    abstract void control (long deltaTime, Map map, float xCam, float yCam, Player player);
 
 
 	/**
@@ -137,7 +139,11 @@ public abstract class Entity {
      */
     public void damage(int amount) {
     	if (armor.isEmpty()) {
+
+        	System.out.println("Damaged");
     		life.rem(amount);
+    		System.out.println(life.isEmpty());
+    		
 		} else {
     		armor.rem(amount);
 		}

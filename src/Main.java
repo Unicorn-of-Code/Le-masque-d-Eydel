@@ -11,7 +11,8 @@ public class Main extends StateBasedGame {
 
 	public Main(String name) {
 		super(name);
-		this.addState(new Map(0));
+		this.addState(new Splash(0));
+		this.addState(new Map(1));
 	}
 
 	/* (non-Javadoc)
@@ -20,6 +21,7 @@ public class Main extends StateBasedGame {
 	@Override
 	public void initStatesList(GameContainer gc) throws SlickException {
 		this.getState(0).init(gc, this);
+		this.getState(1).init(gc, this);
 	}
 
 	/**
@@ -31,6 +33,7 @@ public class Main extends StateBasedGame {
 			app = new AppGameContainer( new Main(name));
 			app.setIcon("resources/hud/Icon.png");
 			app.setDisplayMode( 1920, 1080, false);
+			app.setShowFPS(false);
 			app.start();
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block

@@ -3,6 +3,9 @@ package entity.attack;
 import entity.Entity;
 import entity.hitbox.Element;
 import entity.hitbox.Hitbox;
+
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Polygon;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
@@ -19,7 +22,7 @@ class Plant11 extends AttackState {
      *
      */
     Plant11(Attack attackProperty, Vector2f direction) {
-        super(attackProperty, 4, direction.normalise().scale(0.1f),
+        super(attackProperty, 30, direction.normalise().scale(0.1f),
                 Element.Water,
                 10 * Hitbox.tileSize);
     }
@@ -58,5 +61,17 @@ class Plant11 extends AttackState {
         ArrayList<Shape> shapes = new ArrayList<Shape>();
         shapes.add(shape);
         return shapes;
+    }
+    
+    /**
+     * Draw AttackState
+     * @param g Graphic Slick
+     */
+    public void draw(Graphics g) {
+        for (Hitbox hitbox : hitboxes) {
+        	g.setColor(new Color(0, 0, 1f, 1f));
+        	g.draw(hitbox.getShape());
+        	g.fill(hitbox.getShape());
+        }
     }
 }

@@ -17,7 +17,7 @@ public class Camera {
 	}
 	
 	public void place(GameContainer gc, Graphics g) {
-		g.translate(gc.getWidth() / 2 - (int) this.xCamera, gc.getHeight() / 2 - (int) this.yCamera -270);
+		g.translate(gc.getWidth() / 2 - (int) this.xCamera, gc.getHeight() / 2 - (int) this.yCamera - 300);
 	}
 	
 	public void update(GameContainer gc) {
@@ -38,5 +38,8 @@ public class Camera {
 	
 	public float getX() {
 		return this.xCamera;
+	}	
+	public float getY() {
+		return this.yCamera;
 	}
 }

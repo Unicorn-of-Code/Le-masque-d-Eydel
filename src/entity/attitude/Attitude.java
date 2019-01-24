@@ -48,24 +48,24 @@ public class Attitude {
         return isMoving;
     }
 
-    public Attitude (Enemy enemy, boolean isCac, long stepCoolInMs, long stepAttackInMs,
-                     long castTime, long cooldownAttack, float rangeAttack) {
+    public Attitude (Enemy enemy, boolean isCac, long stepCoolInMs, long stepAttackInMs, long cooldownAttack, long castTime, float rangeAttack) {
 
         this.enemy = enemy;
         this.isCac = isCac;
         timerStepCool = Time.createTimer(stepCoolInMs);
+        timerStepAttack = Time.createTimer(stepAttackInMs);
         this.cooldownAttack = Time.createTimer(cooldownAttack);
         this.castTimeAttack = Time.createTimer(castTime);
     }
 
     public void update (float deltaTime, Player player) {
         isAttackCast = false;
+    	System.out.println("isCool : " + isCool);
         if (isCool) {
             // Si decouvre le player
             if (testCool(player)) {
                 isCool = false;
                 timerStepAttack.reset();
-                timerWaitAttack.reset();
             } else {
                 // Si le mob doit bouger
                 if (isMoving) {

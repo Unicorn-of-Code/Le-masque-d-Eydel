@@ -29,7 +29,7 @@ public class Gauge {
     /**
      * If true, doesn't remove
      */
-    private boolean invicible;
+    private boolean invicible = false;
 
     /**
      * add an amount to current
@@ -47,9 +47,9 @@ public class Gauge {
      * @param rem amount to remove
      * @return true if 0 reached
      */
-    public boolean rem(int rem) {
+    public boolean rem (int rem) {
         if (!invicible) {
-            current += rem;
+            current -= rem;
             if (current <= 0) {
                 current = 0;
                 return true;

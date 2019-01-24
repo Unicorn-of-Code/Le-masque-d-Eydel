@@ -15,15 +15,15 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Vector2f;
 
-public class SlimeFire extends Enemy {
+public class SlimePlant extends Enemy {
 	
 	private Animation[] animations = new Animation[8];
 
-    public SlimeFire(float x, float y) {
+    public SlimePlant(float x, float y) {
         super(x, y, Hitbox.tileSize, 3f, 0.13f,
                 Element.Fire, 8);
         try {
-			SpriteSheet spriteSheet = new SpriteSheet("resources/sprites/monsters/slimeRed.png", 24, 24);
+			SpriteSheet spriteSheet = new SpriteSheet("resources/sprites/monsters/slimeGreen.png", 24, 24);
 			this.animations[0] = loadAnimation(spriteSheet, 0, 1, 0);
 		    this.animations[1] = loadAnimation(spriteSheet, 0, 1, 1);
 		    this.animations[2] = loadAnimation(spriteSheet, 0, 1, 2);
