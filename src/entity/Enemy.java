@@ -7,8 +7,10 @@ import entity.attitude.Attitude;
 import entity.hitbox.Allegency;
 import entity.hitbox.Element;
 import level.Map;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.geom.Shape;
+import org.newdawn.slick.geom.Vector2f;
 
 
 /**
@@ -18,16 +20,19 @@ public abstract class Enemy extends Entity {
 
     private Attitude attitude;
     private Shape vision;
+    private float movementSpeedFast;
 
     /**
      * Initialize a new entity which has a vision range
      * @param x,y : position
      * @param size : hitbox size
      */
-    public Enemy(float x, float y, float size, float movementSpeed, Allegency allegency,
-                 Element element, float visionRange, Attitude attitude) {
+    public Enemy(float x, float y, float size, float movementSpeed, float movementSpeedFast,
+                 Element element, float visionRange) {
         super(x, y, size, movementSpeed, Allegency.Ennemy, element);
         this.vision = new Circle(this.getHitbox().getShape().getX(), this.getHitbox().getShape().getY(), visionRange);
+        this.movementSpeedFast = movementSpeedFast;
+        this.attitude = getAttitude();
     }
 
     /* Test
@@ -39,43 +44,34 @@ public abstract class Enemy extends Entity {
 
     @Override
     void control (long deltaTime, Map map) {
-        move(deltaTime, map.getPlayer());
-    }
-
-    public void move(float deltaTime, Player player) {
-        //if the enemy's moving
-        if (this.isMoving()) {
-
-            float playerx = player.getHitbox().getShape().getX();
-            float playery = player.getHitbox().getShape().getY();
-            float x = this.getHitbox().getShape().getX();
-            float y = this.getHitbox().getShape().getY();
-
-            //if it's in range of the player
-            if (vision.contains(playerx, playery)) {
-                Circle attackRange =  new Circle(this.getHitbox().getShape().getX(), this.getAttack().getHitbox().getShape().getY(), this.attackRange);
-                if (attackRange >= 5555) {
-                    this.attack();
-                } else {
-
-                    Random random = new Random();
-                    int randomInt = random.nextInt(400);
-                    if (randomInt < 200) {
-                        if (playerx - x > 0) {
-                            this.getHitbox().getShape().setX(x + this.getMovementSpeed()*delta);
-                        } else {
-                            this.getHitbox().getShape().setX(x - this.getMovementSpeed()*delta);
-                        }
-                    } else if (randomInt <= 400) {
-                        if (playery - y > 0) {
-                            this.getHitbox().getShape().setY(y + this.getMovementSpeed()*delta);
-                        } else {
-                            this.getHitbox().getShape().setY(y - this.getMovementSpeed()*delta);
-                        }
-                    }
-                }
-            }
+        vision.setCenterX(getHitbox().getShape().getCenterX());
+        vision.setCenterY(getHitbox().getShape().getCenterY());
+        attitude.update(deltaTime, map.getPlayer());
+        if (attitude.isAttackCast()) {
+            castAttack(getDirectionPlayer(map.getPlayer()), map);
+        } else if (attitude.isMoving()) {
+            movement.normalise().scale( (attitude.isCool())? movementSpeed : movementSpeed).setTheta(attitude.getAngleDirection());
         }
     }
 
+    private Vector2f getDirectionPlayer (Player player) {
+        return new Vector2f(
+                player.getHitbox().getShape().getCenterX() - getHitbox().getShape().getCenterX(),
+                player.getHitbox().getShape().getCenterY() - getHitbox().getShape().getCenterY()
+        );
+    }
+
+    public Shape getVision() {
+        return vision;
+    }
+
+    abstract void castAttack (Vector2f direction, Map map);
+
+    abstract Attitude getAttitude();
+
+
+    @Override
+    public void draw(Graphics g) {
+
+    }
 }

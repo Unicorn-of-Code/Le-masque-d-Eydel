@@ -47,10 +47,10 @@ public final class Time {
 
     /**
      * Remove a Timer or a Tick
-     * @param timer The Timer or  Tick to delete
+     * @param timerType The Timer or  Tick to delete
      */
-    public void deleteTimer(Timer timer) {
-        timers.remove(timer);
+    public void deleteTimerType(TimerType timerType) {
+        timers.remove(timerType);
     }
 
 }
