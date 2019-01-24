@@ -72,7 +72,7 @@ public abstract class Entity {
      * Update the whole entity
 	 * @param deltaTime Delta Time
      */
-    public void update(long deltaTime, Map map) {
+    public boolean update(long deltaTime, Map map) {
     	// Resolve if Move
 		control(deltaTime, map);
 
@@ -87,6 +87,7 @@ public abstract class Entity {
 
 		// Resolve final movement
         hitbox.move(movement);
+    	return life.isEmpty();
     }
 
     abstract void control (long deltaTime, Map map);
