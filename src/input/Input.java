@@ -79,7 +79,7 @@ public final class Input {
         down = in.isKeyDown(org.newdawn.slick.Input.KEY_S)? 1 : 0;
         right = in.isKeyDown(org.newdawn.slick.Input.KEY_D)? 1 : 0;
         switchLeft = in.isKeyDown(org.newdawn.slick.Input.KEY_LSHIFT);
-        switchRight = in.isKeyDown(org.newdawn.slick.Input.KEY_LALT);
+        switchRight = in.isKeyDown(org.newdawn.slick.Input.KEY_F);
         a1 = in.isMouseButtonDown(org.newdawn.slick.Input.MOUSE_LEFT_BUTTON);
         a2 = in.isMouseButtonDown(org.newdawn.slick.Input.MOUSE_RIGHT_BUTTON);
         a3 = in.isKeyDown(org.newdawn.slick.Input.KEY_A);
