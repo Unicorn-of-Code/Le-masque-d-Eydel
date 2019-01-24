@@ -71,6 +71,10 @@ public abstract class Entity {
         return this.hitbox;
     }
 
+    public float getMovementSpeed() {
+    	return (float)this.movementSpeed;
+	}
+
     /**
      * 	movement
      */
