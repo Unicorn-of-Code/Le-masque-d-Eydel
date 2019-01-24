@@ -34,7 +34,7 @@
   <image source="../tiles/tuto-slick2d-037-tuile-logic.png" width="160" height="160"/>
  </tileset>
  <tileset firstgid="6753" name="logic" tilewidth="16" tileheight="16" tilecount="0" columns="5">
-  <image source="../../../Documents/GitHub/Le-masque-d-Eydel/resources/tiles/logic.png" width="80" height="80"/>
+  <image source="../tiles/logic.png" width="80" height="80"/>
  </tileset>
  <tileset firstgid="6753" name="logic" tilewidth="16" tileheight="16" tilecount="25" columns="5">
   <image source="../tiles/logic.png" width="80" height="80"/>
