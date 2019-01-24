@@ -79,6 +79,8 @@ public class Map extends BasicGameState{
 		this.map.render(0, 0, 11);
 		this.map.render(0, 0, 12);
 		this.map.render(0, 0, 13);
+		this.map.render(0, 0, 14);
+		this.map.render(0, 0, 16);
 
 		// Render sprites
 		
@@ -97,12 +99,13 @@ public class Map extends BasicGameState{
 			ennemy.draw(g);
 		}
 
-		this.map.render(0, 0, 14);
-		this.map.render(0, 0, 15);
-		this.map.render(0, 0, 16);
 		this.map.render(0, 0, 17);
 		this.map.render(0, 0, 18);
 		this.map.render(0, 0, 19);
+		this.map.render(0, 0, 20);
+		this.map.render(0, 0, 21);
+		this.map.render(0, 0, 22);
+		this.map.render(0, 0, 23);
 		this.hud.render(g);
 	}
 	
