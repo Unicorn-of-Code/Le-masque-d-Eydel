@@ -8,6 +8,7 @@ import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
@@ -135,6 +136,19 @@ public class Map extends BasicGameState{
 		}
 	}
 	
+	public boolean isCollision(float x, float y) {
+	    int tileW = this.map.getTileWidth();
+	    int tileH = this.map.getTileHeight();
+	    int collisionLayer = this.map.getLayerIndex("Collision");
+	    Image tile = this.map.getTileImage((int) x / tileW, (int) y / tileH, collisionLayer);
+	    boolean collision = tile != null;
+	    if (collision) {
+	        Color color = tile.getColor((int) x % tileW, (int) y % tileH);
+	        collision = color.getAlpha() > 0;
+	    }
+	    return collision;
+	}
+	
 	@Override
 	public int getID() {
 		return 0;
@@ -152,7 +166,7 @@ public class Map extends BasicGameState{
 	 * Get all entities
 	 * @return List of entities
 	 */
-	private List<Entity> getEntities() {
+	public List<Entity> getEntities() {
 		List<Entity> en = new ArrayList<>(ennemies);
 		en.add(player);
 		return en;

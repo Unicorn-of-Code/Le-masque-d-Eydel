@@ -11,6 +11,7 @@ import java.util.*;
 
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.geom.Vector2f;
 
 /**
@@ -85,9 +86,27 @@ public abstract class Entity {
                 eSIt.remove();
             }
         }
-
+    	
 		// Resolve final movement
-        hitbox.move(movement);
+    	if (isMoving()) {
+	        hitbox.move(movement);
+	        // If collision decort
+	        boolean cont = true;
+	        for (Entity entity : map.getEntities()) {
+	        	if (this != entity) {
+	        		if (this.getHitbox().collision(entity.getHitbox())) {
+	    	        	hitbox.move(movement.negate());
+	    	        	cont = false;
+	    	        	break;
+	        		}
+	        	}
+	        }
+	        if (cont) {
+	        	if (map.isCollision(this.getX()-this.getHitbox().getShape().getWidth(), this.getY()-this.getHitbox().getShape().getHeight())) {
+		        	hitbox.move(movement.negate());
+		        }   
+	        }
+    	}
     	return life.isEmpty();
     }
 
