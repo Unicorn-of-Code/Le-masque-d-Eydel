@@ -57,9 +57,7 @@ public class Hud {
 	private static final Color FILL_COLOR = new Color(255, 255, 255);
 
 	public void render(Graphics g) {
-		System.err.println("coucou");
 		Element element=player.getHitbox().getElement();
-		System.err.println(element);
 		g.resetTransform();
 		g.setColor(LIFE_COLOR);
 		g.fillRect(BAR_X, LIFE_BAR_Y, .9f * BAR_WIDTH, BAR_HEIGHT);

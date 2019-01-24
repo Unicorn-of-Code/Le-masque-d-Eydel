@@ -33,6 +33,7 @@ public abstract class Entity {
     	this.direction = 2;
     	this.movementSpeed = movementSpeed;	// pixel / ms
     	hitbox = new Hitbox(new Rectangle(x, y, size, size), allegency, element);
+    	this.life = new Gauge(100);
     }
     
     public float getX() {
@@ -61,7 +62,7 @@ public abstract class Entity {
 
 
 	public boolean isMoving() {
-		return movement.getX()==0 && movement.getY() == 0;
+		return movement.getX() != 0 || movement.getY() != 0;
 	}
 
     public Hitbox getHitbox() {
