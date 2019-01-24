@@ -56,13 +56,16 @@ public class Map extends BasicGameState{
 		Input.update(gc);
 
 		// Update Player
+		// If true : Game Over
 		player.update(delta, this);
 
 		// Update Ennemies
 		Iterator<Ennemy> itEn = ennemies.iterator();
 		while (itEn.hasNext()) {
 			Ennemy ennemy = itEn.next();
-			ennemy.update(delta, this);
+			if (ennemy.update(delta, this)) {
+				itEn.remove();
+			}
 		}
 
 		// Update Attack
@@ -75,7 +78,7 @@ public class Map extends BasicGameState{
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame s, Graphics g) throws SlickException {
-		// scalling screen
+		// Scalling screen
 		g.scale(2.5f, 2.5f);
 
 		// Layout rendering
