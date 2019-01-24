@@ -3,6 +3,8 @@ package entity.attack;
 import entity.Entity;
 import entity.hitbox.Element;
 import entity.hitbox.Hitbox;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.geom.Vector2f;
 
@@ -16,35 +18,35 @@ public abstract class AttackState {
 
     /**
      * Constructor
-     *
+     * @param attackProperty Attack which has launhed
      * @param damage   Damage done by the AttackState
-     * @param movement Movement of the AttackState's hitboxes
-     * @param hitboxes Hitboxes of the AttackState
+     * @param element Element of the attack
+     * @param maxRange Range max reached
      */
     private AttackState(Attack attackProperty, int damage,
                         Element element, float maxRange) {
+        this(attackProperty, damage, new Vector2f(0, 0), element, maxRange);
+    }
+
+    /**
+     * Constructor
+     * @param attackProperty Attack which has launhed
+     * @param damage   Damage done by the AttackState
+     * @param movement Movement of the hitbox
+     * @param element Element of the attack
+     * @param maxRange Range max reached
+     */
+    AttackState(Attack attackProperty, int damage, Vector2f movement,
+                Element element, float maxRange) {
         this.damage = damage;
-        for (Shape shape : getShapeArrayList(attackProperty, direction)) {
+        for (Shape shape : getShapeArrayList(attackProperty, movement)) {
             hitboxes.add(new Hitbox(
                     shape,
                     attackProperty.getEntity().getHitbox().getAllegency(),  // Take the Allegency of the launcher
                     element));
         }
         this.maxRange = maxRange;
-    }
-
-    /**
-     * Constructor
-     *
-     * @param damage   Damage done by the AttackState
-     * @param movement Movement of the AttackState's hitboxes
-     * @param hitboxes Hitboxes of the AttackState
-     */
-    AttackState(Attack attackProperty, int damage, Vector2f movement,
-                Element element, float maxRange) {
-        this(attackProperty, damage, shapes, element, maxRange);
         this.movement = movement;
-
     }
 
     /**
@@ -66,7 +68,7 @@ public abstract class AttackState {
     /**
      * Vector of the movement of the AttackState's Hitbox
      */
-    private Vector2f movement = new Vector2f(0, 0);
+    private Vector2f movement;
 
     /**
      * The Attack which this AttackState is based on based
@@ -119,9 +121,7 @@ public abstract class AttackState {
         for (Entity entity : entities) {
             for (Hitbox hitbox : hitboxes) {
                 if (hitbox.collision(entity.getHitbox())) {
-                    if (hitbox.getAllegency() != entity.getHitbox().getAllegency()) {
-                        DamageCalculation.attributeDamage(this, entity);
-                    }
+                    DamageCalculation.attributeDamage(this, entity);
                 }
             }
         }
@@ -129,13 +129,15 @@ public abstract class AttackState {
 
     public boolean moveHitboxes(long deltaTime) {
         Iterator<Hitbox> i = hitboxes.iterator();
-        for (Hitbox hitbox = i.next(); i.hasNext(); hitbox = i.next()) {
+        while (i.hasNext()) {
+            Hitbox hitbox = i.next();
             Vector2f currentMovement = new Vector2f(movement).scale(deltaTime);
             hitbox.move(currentMovement);
             currentRange += currentMovement.length();
             if (currentRange >= maxRange) {
                 i.remove();
             }
+
         }
         if (hitboxes.isEmpty()) {
             return true;
@@ -171,4 +173,14 @@ public abstract class AttackState {
     }
 
     abstract ArrayList<Shape> getShapeArrayList(Attack attackProperty, Vector2f direction);
+
+    /**
+     * Draw AttackState
+     * @param g Graphic Slick
+     */
+    public void draw(Graphics g) {
+        for (Hitbox hitbox : hitboxes) {
+            // TODO : Draw sprite on each hitbox
+        }
+    }
 }

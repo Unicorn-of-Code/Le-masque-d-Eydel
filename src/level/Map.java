@@ -56,13 +56,13 @@ public class Map extends BasicGameState{
 		Input.update(gc);
 
 		// Update Player
-		player.update(delta, this);
+		player.update(delta);
 
 		// Update Ennemies
 		Iterator<Ennemy> itEn = ennemies.iterator();
 		while (itEn.hasNext()) {
 			Ennemy ennemy = itEn.next();
-			ennemy.update(delta, this);
+			ennemy.update(delta);
 		}
 
 		// Update Attack

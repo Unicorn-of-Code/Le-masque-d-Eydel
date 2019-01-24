@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 
  */
-public class Ennemy extends Entity {
+public abstract class Ennemy extends Entity {
 
     /**
      * Default constructor

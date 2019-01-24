@@ -2,6 +2,7 @@ package entity.attack;
 
 import entity.Entity;
 import entity.Player;
+import org.newdawn.slick.Graphics;
 
 import java.util.*;
 
@@ -39,6 +40,17 @@ public abstract class Attack {
         }
         return stateStack.empty();
     }
+
+
+    /**
+     * Draw Attack
+     * @param g Graphic Slick
+     */
+    public void draw(Graphics g) {
+        stateStack.peek().draw(g);
+    }
+
+
 
     /**
      * Get the Entity of the launcher

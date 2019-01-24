@@ -60,7 +60,7 @@ public abstract class DamageCalculation {
                         launcher.heal((int) (damage * 0.1));
                         break;
                     case Water:     // Slow target 0.5 of movement speed for 2s
-                        victim.addEntityState(new SlowSate(victim, 2, 0.5));
+                        victim.addEntityState(new SlowState(victim, 2, 0.5f));
                         break;
                 }
             }
@@ -74,12 +74,9 @@ public abstract class DamageCalculation {
      * @return If e1 is strong against e2
      */
     private static boolean isStrong (Element e1, Element e2) {
-        if (e1 == Element.Fire && e2 == Element.Plant ||    // Fire against Plant
-            e1 == Element.Plant && e2 == Element.Water ||   // Plant against Water
-            e1 == Element.Water && e2 == Element.Fire) {    // Water against Fire
-            return true;
-        }
-        return false;
+        return (e1 == Element.Fire && e2 == Element.Plant ||    // Fire against Plant
+                e1 == Element.Plant && e2 == Element.Water ||   // Plant against Water
+                e1 == Element.Water && e2 == Element.Fire);
     }
 
     /**
