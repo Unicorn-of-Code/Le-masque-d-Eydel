@@ -23,7 +23,7 @@ import java.util.List;
 
 public class Map extends BasicGameState{
 
-	private GameContainer container;
+	private GameContainer gc;
 	private TiledMap map;
 	
 	private Player player;
@@ -40,7 +40,7 @@ public class Map extends BasicGameState{
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame s) throws SlickException {
-		this.container = gc;
+		this.gc = gc;
 		// load Map
 		this.map = new TiledMap("resources/Map/Map.tmx");
 
