@@ -8,6 +8,8 @@ import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.BasicGameState;
@@ -47,6 +49,10 @@ public class Map extends BasicGameState{
 		player = new Player(400, 400);
 
 		// load hud
+		playerAnimations = player.getAnimation();
+		Music background = new Music("resources/sound/game.ogg");
+	    background.loop();
+		hud=new Hud(player);
 		this.hud.init();
 	}
 
@@ -56,16 +62,13 @@ public class Map extends BasicGameState{
 		Input.update(gc);
 
 		// Update Player
-		// If true : Game Over
 		player.update(delta, this);
 
 		// Update Ennemies
 		Iterator<Ennemy> itEn = ennemies.iterator();
 		while (itEn.hasNext()) {
 			Ennemy ennemy = itEn.next();
-			if (ennemy.update(delta, this)) {
-				itEn.remove();
-			}
+			ennemy.update(delta, this);
 		}
 
 		// Update Attack
@@ -78,7 +81,7 @@ public class Map extends BasicGameState{
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame s, Graphics g) throws SlickException {
-		// Scalling screen
+		// scalling screen
 		g.scale(2.5f, 2.5f);
 
 		// Layout rendering
