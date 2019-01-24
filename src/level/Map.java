@@ -1,6 +1,6 @@
 package level;
 
-import entity.Enemy;
+import entity.Ennemy;
 import entity.Entity;
 import entity.attack.Attack;
 import input.Input;
@@ -8,6 +8,8 @@ import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.state.BasicGameState;
@@ -22,16 +24,16 @@ import java.util.List;
 
 public class Map extends BasicGameState{
 
-	private GameContainer container;
+	private GameContainer gc;
 	private TiledMap map;
 	
-	private Player player;
-
-	private List<Enemy> ennemies = new ArrayList<>();
+	private List<Ennemy> ennemies = new ArrayList<>();
 
 	private List<Attack> attacks = new ArrayList<>();
 
-	private Hud hud = new Hud();
+	private Player player;
+	private Hud hud;
+	private Camera camera;
 	
 	public Map(int state) {
 		
@@ -39,48 +41,30 @@ public class Map extends BasicGameState{
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame s) throws SlickException {
-		this.container = gc;
+		this.gc = gc;
+		
+		// load player
+		player = new Player(150, 638);
+		
 		// load Map
 		this.map = new TiledMap("resources/Map/Map.tmx");
-
-		// load player
-		player = new Player(400, 400);
-
-		// load hud
+		camera = new Camera(player);
+		
+		// load music
+		Music background = new Music("resources/sound/game.ogg");
+	    background.loop();
+	    
+	    // load hud
+		hud=new Hud(player);
 		this.hud.init();
 	}
 
 	@Override
-	public void update(GameContainer gc, StateBasedGame s, int delta) throws SlickException {
-		// Update Input
-		Input.update(gc);
-
-		// Update Player
-		// If true : Game Over
-		player.update(delta, this);
-
-		// Update Ennemies
-		Iterator<Enemy> itEn = ennemies.iterator();
-		while (itEn.hasNext()) {
-			Enemy ennemy = itEn.next();
-			if (ennemy.update(delta, this)) {
-				itEn.remove();
-			}
-		}
-
-		// Update Attack
-		Iterator<Attack> itAt = attacks.iterator();
-		while (itAt.hasNext()) {
-			Attack attack = itAt.next();
-			attack.update(delta, getEntities());
-		}
-	}
-
-	@Override
 	public void render(GameContainer gc, StateBasedGame s, Graphics g) throws SlickException {
-		// Scalling screen
+		// scalling screen
 		g.scale(2.5f, 2.5f);
-
+		// Place default position camera
+		this.camera.place(gc, g);
 		// Layout rendering
 		this.map.render(0, 0, 0);
 		this.map.render(0, 0, 1);
@@ -91,13 +75,15 @@ public class Map extends BasicGameState{
 		this.map.render(0, 0, 6);
 		this.map.render(0, 0, 7);
 		this.map.render(0, 0, 8);
-		//this.Map.render(0, 0, 9);
+		this.map.render(0, 0, 9);
 		this.map.render(0, 0, 10);
 		this.map.render(0, 0, 11);
 		this.map.render(0, 0, 12);
 		this.map.render(0, 0, 13);
+		
 
 		// Render sprites
+		
 		// Render Animation added
 
 		// Render Attacks
@@ -109,17 +95,58 @@ public class Map extends BasicGameState{
 		player.draw(g);
 
 		// Render Ennemies
-		for (Enemy ennemy : ennemies) {
+		for (Ennemy ennemy : ennemies) {
 			ennemy.draw(g);
 		}
-
 		this.map.render(0, 0, 14);
 		this.map.render(0, 0, 15);
 		this.map.render(0, 0, 16);
 		this.map.render(0, 0, 17);
 		this.map.render(0, 0, 18);
 		this.map.render(0, 0, 19);
+		this.map.render(0, 0, 20);
+		this.map.render(0, 0, 21);
+		
 		this.hud.render(g);
+	}
+	
+	@Override
+	public void update(GameContainer gc, StateBasedGame s, int delta) throws SlickException {
+		// Update Input
+		Input.update(gc);
+
+		// Update Player
+		player.update(delta, this);
+		
+		// Update Camera
+		this.camera.update(gc);
+
+		// Update Ennemies
+		Iterator<Ennemy> itEn = ennemies.iterator();
+		while (itEn.hasNext()) {
+			Ennemy ennemy = itEn.next();
+			ennemy.update(delta, this);
+		}
+
+		// Update Attack
+		Iterator<Attack> itAt = attacks.iterator();
+		while (itAt.hasNext()) {
+			Attack attack = itAt.next();
+			attack.update(delta, getEntities());
+		}
+	}
+	
+	public boolean isCollision(float x, float y) {
+	    int tileW = this.map.getTileWidth();
+	    int tileH = this.map.getTileHeight();
+	    int collisionLayer = this.map.getLayerIndex("Collision");
+	    Image tile = this.map.getTileImage((int) x / tileW, (int) y / tileH, collisionLayer);
+	    boolean collision = tile != null;
+	    if (collision) {
+	        Color color = tile.getColor((int) x % tileW, (int) y % tileH);
+	        collision = color.getAlpha() > 0;
+	    }
+	    return collision;
 	}
 	
 	@Override
@@ -139,7 +166,7 @@ public class Map extends BasicGameState{
 	 * Get all entities
 	 * @return List of entities
 	 */
-	private List<Entity> getEntities() {
+	public List<Entity> getEntities() {
 		List<Entity> en = new ArrayList<>(ennemies);
 		en.add(player);
 		return en;

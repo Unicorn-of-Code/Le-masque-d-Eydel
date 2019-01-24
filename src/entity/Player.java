@@ -20,7 +20,6 @@ public class Player extends Entity {
 	// TODO : Gestion Dodge, timer stunt and immunity stunt
 
 	private Animation[] animations = new Animation[8];
-	private static Animation[] playerAnimations;
 	private Vector2f look = new Vector2f(0, 0);
 	private Timer[] timerAttack = new Timer[4];
 
@@ -74,12 +73,24 @@ public class Player extends Entity {
 				case Plant: getHitbox().setElement(Element.Water); break;
 				case Fire: getHitbox().setElement(Element.Plant); break;
 			}
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		if (Input.isSwitchRight()) {
 			switch (getHitbox().getElement()) {
 				case Water: getHitbox().setElement(Element.Plant); break;
 				case Plant: getHitbox().setElement(Element.Fire); break;
 				case Fire: getHitbox().setElement(Element.Water); break;
+			}
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 	}
@@ -161,13 +172,12 @@ public class Player extends Entity {
 		return this.animations;
 	}
 
-
 	/**
 	 * Draw Player
 	 * @param g Graphic Slick
 	 */
 	public void draw(Graphics g) {
-		g.drawAnimation(playerAnimations[getDirection() + (isMoving() ? 4 : 0)], (int) getX()-32, (int) getY()-60);
+		g.drawAnimation(animations[getDirection() + (isMoving() ? 4 : 0)], (int) getX()-32, (int) getY()-60);
 		g.setColor(new Color(0, 0, 0, .5f));
 		g.fillOval(getX() - 31, getY() - 40, 16, 8);
 
