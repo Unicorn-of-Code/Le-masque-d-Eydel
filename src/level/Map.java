@@ -32,7 +32,7 @@ public class Map extends BasicGameState{
 
     private List<Attack> attacks = new ArrayList<>();
 
-    private Hud hud = new Hud();
+    private Hud hud = new Hud(player);
 
     public Map(int state) {
 
