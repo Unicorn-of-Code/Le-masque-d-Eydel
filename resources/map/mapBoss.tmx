@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="1">
+ <tileset firstgid="1" name="Overworld" tilewidth="16" tileheight="16" tilecount="1440" columns="40">
+  <image source="../tiles/Overworld.png" width="640" height="576"/>
+ </tileset>
+ <tileset firstgid="1441" name="Inner" tilewidth="16" tileheight="16" tilecount="1000" columns="40">
+  <image source="../tiles/Inner.png" width="640" height="400"/>
+ </tileset>
+ <tileset firstgid="2441" name="lava" tilewidth="16" tileheight="16" tilecount="72" columns="6">
+  <image source="../tiles/lava.png" width="96" height="192"/>
+ </tileset>
+ <tileset firstgid="2513" name="castle_lightsources" tilewidth="16" tileheight="16" tilecount="80" columns="10">
+  <image source="../tiles/castle_lightsources.png" width="160" height="128"/>
+ </tileset>
+ <tileset firstgid="2593" name="cave" tilewidth="16" tileheight="16" tilecount="1000" columns="40">
+  <image source="../tiles/cave.png" width="640" height="400"/>
+ </tileset>
+ <tileset firstgid="3593" name="lavarock" tilewidth="16" tileheight="16" tilecount="72" columns="6">
+  <image source="../tiles/lavarock.png" width="96" height="192"/>
+ </tileset>
+ <layer id="2" name="Sol" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu3TsQ3AIAwFURSFMVgvy2aabICoqVCc+CSuuI7iP1m0s5RmU3f9LtKWP03ZGyNvk70zyvFUZtex9key9+rQoUOHDkY6WOlgpYOVDlY6WOlgpYOVDlY6WOlgpYOVDlY6WOlgpYPVro7xntqKIyLCBh063tQBcEpByhAnAAA=
+  </data>
+ </layer>
+ <layer id="3" name="mursBot" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu3PwQ3CMBAAwXuZH+VQKlANSTUkZRAKsBXrAlnCrnQfyzp7Ioze+bT3D+r1/E3H59PBSgcrHax0sNLBSgcrHax0sNLBSgcrHax0sNLBSgcrHax0sNLBSgcrHaz+0XE5iONaIm7Jqb33Ps/svZf1jsdyd0hOy5HZO3Y4nsvdKTktR2bv3OHYopbjl/q24wXLE1xrECcAAA==
+  </data>
+ </layer>
+ <layer id="4" name="mursTop" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu3DMREAIAwEsE7vf0MOcrCBhm7lSO5SxQtWZu7ambnrZGYAAAAAAAAAAPjZBZdbBiUQJwAA
+  </data>
+ </layer>
+ <layer id="5" name="Objets" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu2ZMQ7CMBAETWnzEPgN/AY+CoIKBBUIKhC0XO2KFcSeSDvVFWdnI3uuSFIyY2CTU9pmZq1wiDXHzKwVLrHmmpm1wiPWPDOzNgx2cR574UzU/lacItNZyKX2t+IWme5CLrW/Fa/I9BZyqf3NKClNyoD9jSiRaSrkUvtboc4fqudqLqrnai6q53IuqOdqLqrnai57Piz2HIY9R2HPWdhzFvachT2HYc9R2HMW9pyFmov638DfE1l4XsHoNK9m1R7zH/fsNUcX1TOXxDP+glWVez3S9/j3veqF75XOB4PdO1MQJwAA
+  </data>
+ </layer>
+ <layer id="6" name="Objets2" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu2XyW7CMBRFzYKF+yd8JeVTOhGGzrRMZeqw6artH/WgKlJIE5skoCjRPdJRbLD8nv1wEowRQuShdbJ7FeJQfDaT+/t8vm2HnlljzvECL/EKu3Z3jC/msdaRJXZAzj3s4wCHeG2T5/DNnQffvvuuITfkfIt3eI8P+GjT6+ia6xjrCNu+2CNyfsJnHOMEp/b/3rvmLoprz9LGxL+fkfMcX3CBS1x56pHWL4Jvbt85X5PzBl/xDd/xw3E+XLGESHo+VIF2w5hT7DT++lXLPyQg/x72I+uoYj2+yP8bfypejzh1WYcQWclyL0p7Hyz7fpY17j7vg2WQdx3Rdtm1iOaSZ/wh/x8VpS6/qy11OOdCCCGEEEIIIYQQcX4BpDkmghAnAAA=
+  </data>
+ </layer>
+ <layer id="7" name="Objets3" width="50" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu3TMQqAMBBFwZBSPY3xNOr9z2ECEVIJVrI4A7/fV2xKAAAAAPCs5JSmunnYkr++6r3WsQ4trWEL3NFWekP0jqPuDN6x9467JZrSG8Y/LwE7AAAAgH+7AM2fZlwQJwAA
+  </data>
+ </layer>
+</map>
