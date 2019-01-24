@@ -17,6 +17,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 import entity.Player;
+import entity.Enemy;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -182,6 +183,10 @@ public class Map extends BasicGameState{
 	public int getID() {
 		return 0;
 	}
+
+	public Player getPlayer () {
+	    return player;
+    }
 
 	/**
 	 * Add attack which will update
