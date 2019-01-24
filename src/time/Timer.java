@@ -3,7 +3,7 @@ package time;
 import java.util.*;
 
 /**
- * Timer wich doesn't update at the end
+ * Timer which doesn't update at the end
  */
 public final class Timer extends TimerType {
 

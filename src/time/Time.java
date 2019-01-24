@@ -39,7 +39,7 @@ public final class Time {
      * Update all the Timer and th Tick
      * @param deltaTime Delta Time
      */
-    public void update(long deltaTime) {
+    public static void update(long deltaTime) {
         for (TimerType t : timers) {
             t.update(deltaTime);
         }
@@ -47,10 +47,10 @@ public final class Time {
 
     /**
      * Remove a Timer or a Tick
-     * @param timer The Timer or  Tick to delete
+     * @param timerType The Timer or  Tick to delete
      */
-    public void deleteTimer(Timer timer) {
-        timers.remove(timer);
+    public void deleteTimerType(TimerType timerType) {
+        timers.remove(timerType);
     }
 
 }

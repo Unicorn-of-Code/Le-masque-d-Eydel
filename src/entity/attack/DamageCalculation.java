@@ -26,6 +26,16 @@ public abstract class DamageCalculation {
      */
     private final static float weak = 0.5f;
 
+
+    /**
+     * Attribute the damage correctly and the side effects
+     * @param attackState Specific AttackState which apply
+     * @param victim Entity victim of the Attack
+     */
+    public static void attributeDamageFromEnemy(int damage, Element element, Entity victim, Entity launcher) {
+    	damage(damage, victim, launcher, element);
+    }
+    
     /**
      * Attribute the damage correctly and the side effects
      * @param attackState Specific AttackState which apply
@@ -33,40 +43,45 @@ public abstract class DamageCalculation {
      */
     public static void attributeDamage(AttackState attackState, Entity victim) {
         Entity launcher = attackState.getAttackProperty().getEntity();
-        if (attackState.getHitboxes().get(0).getAllegency() != victim.getHitbox().getAllegency()) {
-            Element e1 = attackState.getHitboxes().get(0).getElement();
-            Element e2 = victim.getHitbox().getElement();
-            float modifier;
-            boolean applyPassif = false;
-            if (isMedium(e1, e2)) {
-                modifier = medium;
-            } else if (isStrong(e1, e2)) {
-                modifier = strong;
-                applyPassif = true;
-            } else {
-                modifier = weak;
-            }
+        Element e1 = attackState.getHitboxes().get(0).getElement();
 
-            int damage = (int) (attackState.getDamage() * modifier);
+    	if (attackState.getHitboxes().get(0).getAllegency() != victim.getHitbox().getAllegency()) {
+    		damage(attackState.getDamage(), victim, launcher, e1);
+    	}
+        
+    }
 
-            victim.damage(damage);
+    public static void damage(int damage, Entity victim, Entity launcher, Element e1) {
+        Element e2 = victim.getHitbox().getElement();
+        float modifier;
+        boolean applyPassif = false;
+        if (isMedium(e1, e2)) {
+            modifier = medium;
+        } else if (isStrong(e1, e2)) {
+            modifier = strong;
+            applyPassif = true;
+        } else {
+            modifier = weak;
+        }
 
-            if (applyPassif) {
-                switch (e1) {
-                    case Fire:      // Dot target 2dps for 3s
-                        victim.addEntityState(new DotState(victim, 3, 2, 500));
-                        break;
-                    case Plant:     // Life steal 0.1 * damage
-                        launcher.heal((int) (damage * 0.1));
-                        break;
-                    case Water:     // Slow target 0.5 of movement speed for 2s
-                        victim.addEntityState(new SlowState(victim, 2, 0.5f));
-                        break;
-                }
+        damage = (int) (damage * modifier);
+
+        victim.damage(damage);
+
+        if (applyPassif) {
+            switch (e1) {
+                case Fire:      // Dot target 2dps for 3s
+                    victim.addEntityState(new DotState(victim, 3, 2, 500));
+                    break;
+                case Plant:     // Life steal 0.1 * damage
+                    launcher.heal((int) (damage * 0.1));
+                    break;
+                case Water:     // Slow target 0.5 of movement speed for 2s
+                    victim.addEntityState(new SlowState(victim, 2, 0.5f));
+                    break;
             }
         }
     }
-
     /**
      * Determine if the element is Strong against the other
      * @param e1 Element 1

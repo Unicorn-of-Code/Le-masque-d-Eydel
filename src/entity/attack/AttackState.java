@@ -3,6 +3,8 @@ package entity.attack;
 import entity.Entity;
 import entity.hitbox.Element;
 import entity.hitbox.Hitbox;
+
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Shape;
@@ -47,6 +49,7 @@ public abstract class AttackState {
         }
         this.maxRange = maxRange;
         this.movement = movement;
+        this.attackProperty = attackProperty;
     }
 
     /**
@@ -78,7 +81,7 @@ public abstract class AttackState {
     /**
      * Hitboxes of the AttackState
      */
-    private List<Hitbox> hitboxes = new ArrayList<Hitbox>();
+    List<Hitbox> hitboxes = new ArrayList<Hitbox>();
 
     /**
      * Update the AttackState with the delta Time
@@ -180,7 +183,8 @@ public abstract class AttackState {
      */
     public void draw(Graphics g) {
         for (Hitbox hitbox : hitboxes) {
-            // TODO : Draw sprite on each hitbox
+        	g.setColor(new Color(1f, 0, 0, 1f));
+        	g.draw(hitbox.getShape());
         }
     }
 }

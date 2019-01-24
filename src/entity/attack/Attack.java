@@ -34,10 +34,12 @@ public abstract class Attack {
      * @param deltaTime Delta Time
      * @return True if the Attack is finished
      */
-    public boolean update(long deltaTime,List<Entity> entities) {
-        if (stateStack.peek().update(deltaTime, entities)) {
-            stateStack.pop();
-        }
+    public boolean update(long deltaTime, List<Entity> entities) {
+    	if (!stateStack.isEmpty()) {
+	        if (stateStack.peek().update(deltaTime, entities)) {
+	            stateStack.pop();
+	        }
+    	}
         return stateStack.empty();
     }
 
@@ -47,7 +49,9 @@ public abstract class Attack {
      * @param g Graphic Slick
      */
     public void draw(Graphics g) {
-        stateStack.peek().draw(g);
+    	if (!stateStack.isEmpty()) {
+    		stateStack.peek().draw(g);
+    	}
     }
 
 

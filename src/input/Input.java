@@ -74,19 +74,19 @@ public final class Input {
     public static void update(GameContainer gc) {
         reset();
         org.newdawn.slick.Input in = gc.getInput();
-        up = (gc.getInput().isKeyDown(org.newdawn.slick.Input.KEY_Z))? 1 : 0;
-        left = (gc.getInput().isKeyDown(org.newdawn.slick.Input.KEY_Q))? 1 : 0;
-        down = (gc.getInput().isKeyDown(org.newdawn.slick.Input.KEY_S))? 1 : 0;
-        right = (gc.getInput().isKeyDown(org.newdawn.slick.Input.KEY_D))? 1 : 0;
-        switchLeft = in.isMouseButtonDown(org.newdawn.slick.Input.KEY_LSHIFT);
-        switchRight = in.isMouseButtonDown(org.newdawn.slick.Input.KEY_LALT);
+        up = in.isKeyDown(org.newdawn.slick.Input.KEY_Z)? 1 : 0;
+        left = in.isKeyDown(org.newdawn.slick.Input.KEY_Q)? 1 : 0;
+        down = in.isKeyDown(org.newdawn.slick.Input.KEY_S)? 1 : 0;
+        right = in.isKeyDown(org.newdawn.slick.Input.KEY_D)? 1 : 0;
+        switchLeft = in.isKeyDown(org.newdawn.slick.Input.KEY_LSHIFT);
+        switchRight = in.isKeyDown(org.newdawn.slick.Input.KEY_F);
         a1 = in.isMouseButtonDown(org.newdawn.slick.Input.MOUSE_LEFT_BUTTON);
         a2 = in.isMouseButtonDown(org.newdawn.slick.Input.MOUSE_RIGHT_BUTTON);
-        a3 = in.isMouseButtonDown(org.newdawn.slick.Input.KEY_A);
-        a4 = in.isMouseButtonDown(org.newdawn.slick.Input.KEY_E);
-        dodge = in.isMouseButtonDown(org.newdawn.slick.Input.KEY_SPACE);
-        mouseX = in.getMouseX();
-        mouseY = in.getMouseY();
+        a3 = in.isKeyDown(org.newdawn.slick.Input.KEY_A);
+        a4 = in.isKeyDown(org.newdawn.slick.Input.KEY_E);
+        dodge = in.isKeyDown(org.newdawn.slick.Input.KEY_SPACE);
+        mouseX = in.getAbsoluteMouseX();
+        mouseY = in.getAbsoluteMouseY();
     }
 
     private static void reset(){

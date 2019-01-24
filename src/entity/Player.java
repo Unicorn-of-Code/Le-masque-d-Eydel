@@ -7,6 +7,8 @@ import org.newdawn.slick.*;
 
 import entity.hitbox.Allegency;
 import entity.hitbox.Element;
+import entity.hitbox.Hitbox;
+
 import org.newdawn.slick.geom.Vector2f;
 import time.Time;
 import time.Timer;
@@ -28,7 +30,7 @@ public class Player extends Entity {
      * Default constructor
      */
     public Player(float x, float y) {
-    	super(x, y, 36.0f, 0.1f, Allegency.Ally, Element.Water);
+    	super(x, y, Hitbox.tileSize, 0.1f, Allegency.Ally, Element.Water);
 		try {
 			SpriteSheet spriteSheet = new SpriteSheet("resources/sprites/people/PlayerWater.png", 18, 25);
 			this.animations[0] = loadAnimation(spriteSheet, 0, 1, 0);
@@ -60,9 +62,9 @@ public class Player extends Entity {
     }
 
     @Override
-	void control (long deltaTime, Map map) {
+	void control (long deltaTime, Map map, float xCam, float yCam, Player player) {
     	switchElement();
-    	attack(map);
+    	attack(map, xCam, yCam);
     	move(deltaTime);
 	}
 
@@ -73,6 +75,12 @@ public class Player extends Entity {
 				case Plant: getHitbox().setElement(Element.Water); break;
 				case Fire: getHitbox().setElement(Element.Plant); break;
 			}
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		if (Input.isSwitchRight()) {
 			switch (getHitbox().getElement()) {
@@ -80,12 +88,19 @@ public class Player extends Entity {
 				case Plant: getHitbox().setElement(Element.Fire); break;
 				case Fire: getHitbox().setElement(Element.Water); break;
 			}
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
-	private void attack (Map map) {
+	private void attack (Map map, float xCam, float yCam) {
     	if (Input.isA1()) {
-			if (timerAttack[0].getPassed()) {
+    		if (timerAttack[0].getPassed()) {
+    		
 				switch (getHitbox().getElement()) {
 					case Water: map.addAttack(new Water1(this, look.copy())); break;
 					case Plant: map.addAttack(new Plant1(this, look.copy())); break;
@@ -93,8 +108,8 @@ public class Player extends Entity {
 				}
 				timerAttack[0].reset();
 			}
+    		
 		} else if (Input.isA2()) {
-
 			if (timerAttack[1].getPassed()) {
 				switch (getHitbox().getElement()) {
 					case Water: map.addAttack(new Water2(this, look.copy())); break;
@@ -105,7 +120,6 @@ public class Player extends Entity {
 			}
 
 		} else if (Input.isA3()) {
-
 			if (timerAttack[2].getPassed()) {
 				switch (getHitbox().getElement()) {
 					case Water: map.addAttack(new Water3(this, look.copy())); break;
@@ -165,9 +179,8 @@ public class Player extends Entity {
 	 * @param g Graphic Slick
 	 */
 	public void draw(Graphics g) {
-		g.drawAnimation(animations[getDirection() + (isMoving() ? 4 : 0)], (int) getX()-32, (int) getY()-60);
+		g.drawAnimation(animations[getDirection() + (isMoving() ? 4 : 0)], (int) getX()-1, (int) getY()-8);
 		g.setColor(new Color(0, 0, 0, .5f));
-		g.fillOval(getX() - 31, getY() - 40, 16, 8);
-
+		g.fillOval(getX(), getY()+12, 16, 8);
 	}
 }
