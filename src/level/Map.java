@@ -1,6 +1,6 @@
 package level;
 
-import entity.Ennemy;
+import entity.Enemy;
 import entity.Entity;
 import entity.attack.Attack;
 import input.Input;
@@ -27,7 +27,7 @@ public class Map extends BasicGameState{
 	
 	private Player player;
 
-	private List<Ennemy> ennemies = new ArrayList<>();
+	private List<Enemy> ennemies = new ArrayList<>();
 
 	private List<Attack> attacks = new ArrayList<>();
 
@@ -60,9 +60,9 @@ public class Map extends BasicGameState{
 		player.update(delta, this);
 
 		// Update Ennemies
-		Iterator<Ennemy> itEn = ennemies.iterator();
+		Iterator<Enemy> itEn = ennemies.iterator();
 		while (itEn.hasNext()) {
-			Ennemy ennemy = itEn.next();
+			Enemy ennemy = itEn.next();
 			if (ennemy.update(delta, this)) {
 				itEn.remove();
 			}
@@ -109,7 +109,7 @@ public class Map extends BasicGameState{
 		player.draw(g);
 
 		// Render Ennemies
-		for (Ennemy ennemy : ennemies) {
+		for (Enemy ennemy : ennemies) {
 			ennemy.draw(g);
 		}
 
