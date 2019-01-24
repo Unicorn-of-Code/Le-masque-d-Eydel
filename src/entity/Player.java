@@ -17,7 +17,7 @@ public class Player extends Entity {
      * Default constructor
      */
     public Player(float x, float y) {
-    	super(x, y, 36.0f, 0.1f, Allegency.Ally, Element.Fire);
+    	super(x, y, 36.0f, 0.1f, Allegency.Ally, Element.Water);
 		try {
 			SpriteSheet spriteSheet = new SpriteSheet("resources/sprites/people/PlayerWater.png", 18, 25);
 			this.animations[0] = loadAnimation(spriteSheet, 0, 1, 0);
