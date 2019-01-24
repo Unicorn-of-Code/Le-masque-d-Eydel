@@ -1,5 +1,8 @@
 package entity.attack;
 
+import entity.Entity;
+import org.newdawn.slick.geom.Vector2f;
+
 import java.util.*;
 
 /**
@@ -7,10 +10,7 @@ import java.util.*;
  */
 public class Plant2 extends Attack {
 
-    /**
-     * Default constructor
-     */
-    public Plant2() {
+    public Plant2(Entity entity, Vector2f direction) {
+        super(entity);
     }
-
 }

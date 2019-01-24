@@ -11,7 +11,7 @@ public class Main extends StateBasedGame {
 
 	public Main(String name) {
 		super(name);
-		this.addState(new map(0));
+		this.addState(new Map(0));
 	}
 
 	/* (non-Javadoc)

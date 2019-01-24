@@ -3,6 +3,8 @@ package entity.attack;
 import entity.Entity;
 import entity.hitbox.Element;
 import entity.hitbox.Hitbox;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.geom.Vector2f;
 
@@ -171,4 +173,14 @@ public abstract class AttackState {
     }
 
     abstract ArrayList<Shape> getShapeArrayList(Attack attackProperty, Vector2f direction);
+
+    /**
+     * Draw AttackState
+     * @param g Graphic Slick
+     */
+    public void draw(Graphics g) {
+        for (Hitbox hitbox : hitboxes) {
+            // TODO : Draw sprite on each hitbox
+        }
+    }
 }

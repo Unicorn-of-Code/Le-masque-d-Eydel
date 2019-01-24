@@ -5,10 +5,11 @@ import entity.attack.EntityState;
 import entity.hitbox.Allegency;
 import entity.hitbox.Element;
 import entity.hitbox.Hitbox;
+import level.Map;
 
 import java.util.*;
 
-import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Vector2f;
 
@@ -71,9 +72,9 @@ public abstract class Entity {
      * Update the whole entity
 	 * @param deltaTime Delta Time
      */
-    public void update(long deltaTime) {
+    public void update(long deltaTime, Map map) {
     	// Resolve if Move
-		move(deltaTime);
+		control(deltaTime, map);
 
     	// Resolve EntityState
 		Iterator<EntityState> eSIt = entityStates.iterator();
@@ -88,12 +89,19 @@ public abstract class Entity {
         hitbox.move(movement);
     }
 
-    public abstract void move (long deltaTime);
+    abstract void control (long deltaTime, Map map);
 
-    /**
-     * Heal the entity
-     * @param amount amount of heal
-     */
+
+	/**
+	 * Draw Entity
+	 * @param g Graphic Slick
+	 */
+	public abstract void draw(Graphics g);
+
+	/**
+	 * Heal the entity
+	 * @param amount amount of heal
+	 */
     public void heal(int amount) {
         life.add(amount);
     }

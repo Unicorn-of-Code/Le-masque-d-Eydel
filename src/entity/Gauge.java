@@ -27,6 +27,11 @@ public class Gauge {
     private int current;
 
     /**
+     * If true, doesn't remove
+     */
+    private boolean invicible;
+
+    /**
      * add an amount to current
      * @param add amount to add
      */
@@ -43,10 +48,12 @@ public class Gauge {
      * @return true if 0 reached
      */
     public boolean rem(int rem) {
-        current += rem;
-        if (current<=0){
-            current = 0;
-            return true;
+        if (!invicible) {
+            current += rem;
+            if (current <= 0) {
+                current = 0;
+                return true;
+            }
         }
         return false;
     }
@@ -76,6 +83,10 @@ public class Gauge {
 
     public boolean isEmpty () {
         return current == 0;
+    }
+
+    public void setInvicible (boolean state) {
+        this.invicible = state;
     }
 
 }
