@@ -1,6 +1,6 @@
 package level;
 
-import entity.Ennemy;
+import entity.Enemy;
 import entity.Entity;
 import entity.attack.Attack;
 import input.Input;
@@ -27,14 +27,16 @@ public class Map extends BasicGameState{
 	private GameContainer gc;
 	private TiledMap map;
 	
-	private List<Ennemy> ennemies = new ArrayList<>();
+	private Player player;
+
+	private List<Enemy> ennemies = new ArrayList<>();
 
 	private List<Attack> attacks = new ArrayList<>();
 
-	private Player player;
-	private Hud hud;
+	private Hud hud = new Hud();
+
 	private Camera camera;
-	
+
 	public Map(int state) {
 		
 	}
@@ -48,6 +50,7 @@ public class Map extends BasicGameState{
 		
 		// load Map
 		this.map = new TiledMap("resources/Map/Map.tmx");
+
 		camera = new Camera(player);
 		
 		// load music
@@ -60,8 +63,34 @@ public class Map extends BasicGameState{
 	}
 
 	@Override
+	public void update(GameContainer gc, StateBasedGame s, int delta) throws SlickException {
+		// Update Input
+		Input.update(gc);
+
+		// Update Player
+		// If true : Game Over
+		player.update(delta, this);
+
+		// Update Ennemies
+		Iterator<Enemy> itEn = ennemies.iterator();
+		while (itEn.hasNext()) {
+			Enemy ennemy = itEn.next();
+			if (ennemy.update(delta, this)) {
+				itEn.remove();
+			}
+		}
+
+		// Update Attack
+		Iterator<Attack> itAt = attacks.iterator();
+		while (itAt.hasNext()) {
+			Attack attack = itAt.next();
+			attack.update(delta, getEntities());
+		}
+	}
+
+	@Override
 	public void render(GameContainer gc, StateBasedGame s, Graphics g) throws SlickException {
-		// scalling screen
+		// Scalling screen
 		g.scale(2.5f, 2.5f);
 		// Place default position camera
 		this.camera.place(gc, g);
@@ -95,7 +124,7 @@ public class Map extends BasicGameState{
 		player.draw(g);
 
 		// Render Ennemies
-		for (Ennemy ennemy : ennemies) {
+		for (Enemy ennemy : ennemies) {
 			ennemy.draw(g);
 		}
 		this.map.render(0, 0, 14);

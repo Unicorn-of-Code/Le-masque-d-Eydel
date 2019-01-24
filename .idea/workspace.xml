@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46d66c3b-4f79-495c-9aff-5fd64304d3d5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/hud/spellbar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/map/mapBoss.tmx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/level/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/entity/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/entity/Entity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/entity/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/entity/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/map/map.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/map/map.tmx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/tiles/logic.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/tiles/logic.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/input/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/input/Input.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/level/Hud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/level/Hud.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/level/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/level/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/level/map.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/entity/Enemy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="47" column="43" selection-start-line="47" selection-start-column="43" selection-end-line="47" selection-end-column="43" />
+            <state relative-caret-position="221">
+              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
             </state>
           </provider>
         </entry>
@@ -28,11 +37,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/level/Map.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="607">
-              <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
-              <caret line="62" column="18" selection-start-line="62" selection-start-column="18" selection-end-line="62" selection-end-column="18" />
-              <caret line="64" column="13" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="13" />
-              <caret line="111" column="14" selection-start-line="111" selection-start-column="14" selection-end-line="111" selection-end-column="14" />
+            <state relative-caret-position="-1433">
+              <caret line="90" column="13" selection-start-line="90" selection-start-column="13" selection-end-line="90" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -43,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/entity/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="69" selection-start-line="69" selection-end-line="69" />
+            <state relative-caret-position="1003">
+              <caret line="68" selection-start-line="68" selection-end-line="68" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -55,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/entity/Entity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="123" column="5" selection-start-line="123" selection-start-column="5" selection-end-line="123" selection-end-column="5" />
+            <state relative-caret-position="1581">
+              <caret line="143" column="5" selection-start-line="143" selection-start-column="5" selection-end-line="143" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -336,13 +342,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23846000" />
+    <option name="totallyTimeSpent" value="23935000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10671141" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.08322147" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -614,13 +620,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/entity/attitude/Attitude.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entity/attitude/Attitude.java" />
     <entry file="file://$PROJECT_DIR$/src/entity/attack/DamageCalculation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1054">
@@ -674,8 +674,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/entity/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="69" selection-start-line="69" selection-end-line="69" />
+        <state relative-caret-position="1003">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -684,25 +684,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/entity/Entity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="123" column="5" selection-start-line="123" selection-start-column="5" selection-end-line="123" selection-end-column="5" />
+        <state relative-caret-position="1581">
+          <caret line="143" column="5" selection-start-line="143" selection-start-column="5" selection-end-line="143" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/entity/Enemy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="47" column="43" selection-start-line="47" selection-start-column="43" selection-end-line="47" selection-end-column="43" />
+        <state relative-caret-position="221">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/level/Map.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
-          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
-          <caret line="62" column="18" selection-start-line="62" selection-start-column="18" selection-end-line="62" selection-end-column="18" />
-          <caret line="64" column="13" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="13" />
-          <caret line="111" column="14" selection-start-line="111" selection-start-column="14" selection-end-line="111" selection-end-column="14" />
+        <state relative-caret-position="-1433">
+          <caret line="90" column="13" selection-start-line="90" selection-start-column="13" selection-end-line="90" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
