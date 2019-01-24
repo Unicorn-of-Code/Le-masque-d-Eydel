@@ -8,7 +8,6 @@ import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
@@ -28,12 +27,12 @@ public class Map extends BasicGameState{
 	private TiledMap map;
 	
 	private Player player;
-
+	
 	private List<Ennemy> ennemies = new ArrayList<>();
 
 	private List<Attack> attacks = new ArrayList<>();
 
-	private Hud hud = new Hud();
+	private Hud hud;
 	
 	public Map(int state) {
 		
@@ -49,7 +48,6 @@ public class Map extends BasicGameState{
 		player = new Player(400, 400);
 
 		// load hud
-		playerAnimations = player.getAnimation();
 		Music background = new Music("resources/sound/game.ogg");
 	    background.loop();
 		hud=new Hud(player);
